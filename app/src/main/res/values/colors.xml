@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="color_white">#FFF</color>
+    <color name="color_bg_login_rl">@color/color_white</color>
+    <color name="color_bg_login_regist_btn">#eeaf00</color>
+
+    <color name="color_main">#00afff</color>
+    <color name="color_main_tab_textcolor_default">#010000</color>
+    <color name="color_main_tab_textcolor_selected">@color/color_main</color>
+
+    <color name="color_bg_zixun_tips">#D7D7D7</color>
+
+    <color name="color_black">#000</color>
+
+    <color name="color_010101">#010101</color>
+    <color name="gallery_blue">@color/color_main</color>
+
+    <color name="color_main_textcolor">@color/color_010101</color>
+
+    <color name="color_bg_rect_regist_item_ll">#f0f2f1</color>
+
+    <color name="color_bg_round_ed_search">#d7d7d7</color>
+    <color name="color_textcolor_gray">#777</color>
+
+    <color name="color_red">#F00</color>
+</resources>

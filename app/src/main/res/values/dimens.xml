@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dp_y1">@dimen/y1</dimen>
+    <dimen name="dp_y5">@dimen/y5</dimen>
+    <dimen name="dp_y10">@dimen/y10</dimen>
+    <dimen name="dp_y12">@dimen/y12</dimen>
+    <dimen name="dp_y14">@dimen/y14</dimen>
+    <dimen name="dp_y16">@dimen/y16</dimen>
+    <dimen name="dp_y20">@dimen/y20</dimen>
+    <dimen name="dp_y22">@dimen/y22</dimen>
+    <dimen name="dp_y24">@dimen/y24</dimen>
+    <dimen name="dp_y25">@dimen/y25</dimen>
+    <dimen name="dp_y28">@dimen/y28</dimen>
+    <dimen name="dp_y30">@dimen/y30</dimen>
+    <dimen name="dp_y35">@dimen/y35</dimen>
+    <dimen name="dp_y40">@dimen/y40</dimen>
+    <dimen name="dp_y43">@dimen/y43</dimen>
+    <dimen name="dp_y45">@dimen/y45</dimen>
+    <dimen name="dp_y48">@dimen/y48</dimen>
+    <dimen name="dp_y50">@dimen/y50</dimen>
+    <dimen name="dp_y52">@dimen/y52</dimen>
+    <dimen name="dp_y60">@dimen/y60</dimen>
+    <dimen name="dp_y70">@dimen/y70</dimen>
+    <dimen name="dp_y72">@dimen/y72</dimen>
+    <dimen name="dp_y80">@dimen/y80</dimen>
+    <dimen name="dp_y90">@dimen/y90</dimen>
+    <dimen name="dp_y92">@dimen/y92</dimen>
+    <dimen name="dp_y100">@dimen/y100</dimen>
+    <dimen name="dp_y108">@dimen/y108</dimen>
+    <dimen name="dp_y116">@dimen/y116</dimen>
+    <dimen name="dp_y120">@dimen/y120</dimen>
+    <dimen name="dp_y128">@dimen/y128</dimen>
+    <dimen name="dp_y129">@dimen/y129</dimen>
+    <dimen name="dp_y130">@dimen/y130</dimen>
+    <dimen name="dp_y134">@dimen/y134</dimen>
+    <dimen name="dp_y136">@dimen/y136</dimen>
+    <dimen name="dp_y138">@dimen/y138</dimen>
+    <dimen name="dp_y150">@dimen/y150</dimen>
+    <dimen name="dp_y160">@dimen/y160</dimen>
+    <dimen name="dp_y156">@dimen/y156</dimen>
+    <dimen name="dp_y180">@dimen/y180</dimen>
+    <dimen name="dp_y200">@dimen/y200</dimen>
+    <dimen name="dp_y207">@dimen/y207</dimen>
+    <dimen name="dp_y220">@dimen/y220</dimen>
+    <dimen name="dp_y231">@dimen/y231</dimen>
+    <dimen name="dp_y249">@dimen/y249</dimen>
+    <dimen name="dp_y430">@dimen/y430</dimen>
+    <dimen name="dp_y478">@dimen/y478</dimen>
+    <dimen name="dp_y600">@dimen/y600</dimen>
+    <dimen name="dp_y900">@dimen/y900</dimen>
+
+    <dimen name="dp_common_title_height">@dimen/dp_y90</dimen>
+    <dimen name="dp_common_title_img_back_size">@dimen/dp_x40</dimen>
+
+    <dimen name="dp_x10">@dimen/x10</dimen>
+    <dimen name="dp_x16">@dimen/x16</dimen>
+    <dimen name="dp_x18">@dimen/x18</dimen>
+    <dimen name="dp_x20">@dimen/x20</dimen>
+    <dimen name="dp_x22">@dimen/x22</dimen>
+    <dimen name="dp_x24">@dimen/x24</dimen>
+    <dimen name="dp_x26">@dimen/x26</dimen>
+    <dimen name="dp_x28">@dimen/x28</dimen>
+    <dimen name="dp_x30">@dimen/x30</dimen>
+    <dimen name="dp_x34">@dimen/x34</dimen>
+    <dimen name="dp_x40">@dimen/x40</dimen>
+    <dimen name="dp_x42">@dimen/x42</dimen>
+    <dimen name="dp_x43">@dimen/x43</dimen>
+    <dimen name="dp_x52">@dimen/x52</dimen>
+    <dimen name="dp_x60">@dimen/x60</dimen>
+    <dimen name="dp_x80">@dimen/x80</dimen>
+    <dimen name="dp_x90">@dimen/x90</dimen>
+    <dimen name="dp_x150">@dimen/x150</dimen>
+    <dimen name="dp_x478">@dimen/x478</dimen>
+
+
+    <dimen name="dp_regist_item_ll_height">@dimen/dp_y90</dimen>
+    <dimen name="dp_frame_margin">@dimen/dp_x30</dimen>
+    <dimen name="dp_regist_item_ll_padding_left_right">@dimen/dp_x10</dimen>
+
+    <dimen name="dp_zixun_tips_padding_left_right">@dimen/dp_frame_margin</dimen>
+
+    <dimen name="dp_regist_item_top">@dimen/dp_y60</dimen>
+    <dimen name="dp_regist_item_margin_top">@dimen/dp_y20</dimen>
+    <dimen name="dp_regist_item_ll_img_width">@dimen/dp_x34</dimen>
+    <dimen name="dp_regist_item_ll_img_height">@dimen/dp_x40</dimen>
+
+    <dimen name="dp_textsize_16">@dimen/dp_x16</dimen>
+    <dimen name="dp_textsize_18">@dimen/dp_x18</dimen>
+    <dimen name="dp_textsize_20">@dimen/dp_x20</dimen>
+    <dimen name="dp_textsize_22">@dimen/dp_x22</dimen>
+    <dimen name="dp_textsize_24">@dimen/dp_x24</dimen>
+    <dimen name="dp_textsize_26">@dimen/dp_x26</dimen>
+    <dimen name="dp_textsize_28">@dimen/dp_x28</dimen>
+    <dimen name="dp_textsize_30">@dimen/dp_x30</dimen>
+    <dimen name="dp_textsize_40">@dimen/dp_x40</dimen>
+    <dimen name="dp_login_rl_img_size">@dimen/dp_y70</dimen>
+
+    <dimen name="dp_round_ed_search_height">@dimen/dp_y70</dimen>
+    <dimen name="dp_round_ed_search_radius">@dimen/dp_y35</dimen>
+    <dimen name="dp_round_btn_search_height">@dimen/dp_y48</dimen>
+    <dimen name="dp_round_btn_search_radius">@dimen/dp_round_ed_search_radius</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="dp_common_btn_height">@dimen/dp_common_title_height</dimen>
+
+
+</resources>

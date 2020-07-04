@@ -1,0 +1,178 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="style_activity_no_title" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="style_login_rl_input">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_y90</item>
+        <item name="android:background">@color/color_bg_login_rl</item>
+        <item name="android:layout_marginLeft">@dimen/dp_frame_margin</item>
+        <item name="android:layout_marginRight">@dimen/dp_frame_margin</item>
+        <item name="android:paddingLeft">@dimen/dp_x20</item>
+        <item name="android:paddingTop">@dimen/dp_y12</item>
+        <item name="android:paddingBottom">@dimen/dp_y12</item>
+    </style>
+
+    <style name="style_login_rl_img">
+        <item name="android:layout_width">@dimen/dp_login_rl_img_size</item>
+        <item name="android:layout_height">@dimen/dp_login_rl_img_size</item>
+        <item name="android:layout_marginRight">@dimen/dp_x10</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="style_login_rl_ed">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">@dimen/dp_textsize_28</item>
+        <item name="android:maxLength">16</item>
+    </style>
+
+    <style name="style_bg_login_regist_btn" parent="@style/style_common_btn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:background">@color/color_bg_login_regist_btn</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="style_regist_item_ll">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_regist_item_ll_height</item>
+        <item name="android:layout_marginLeft">@dimen/dp_frame_margin</item>
+        <item name="android:layout_marginRight">@dimen/dp_frame_margin</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/dp_regist_item_ll_padding_left_right</item>
+        <item name="android:paddingRight">@dimen/dp_regist_item_ll_padding_left_right</item>
+        <item name="android:background">@drawable/bg_rect_regist_ll</item>
+        <item name="android:layout_marginTop">@dimen/dp_regist_item_margin_top</item>
+    </style>
+    <style name="style_regist_item_ll_img">
+        <item name="android:layout_width">@dimen/dp_regist_item_ll_img_width</item>
+        <item name="android:layout_height">@dimen/dp_regist_item_ll_img_height</item>
+        <item name="android:layout_marginRight">@dimen/dp_x26</item>
+    </style>
+    <style name="style_regist_item_ll_ed" parent="@style/style_login_rl_ed">
+
+    </style>
+
+    <style name="style_main_tab_rbt">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@color/color_white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/dp_textsize_18</item>
+        <item name="android:textColor">@color/selected_main_tab_textcolor</item>
+    </style>
+
+    <style name="style_ed_search">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_round_ed_search_height</item>
+        <item name="android:layout_marginTop">@dimen/dp_y30</item>
+        <item name="android:layout_marginLeft">@dimen/dp_frame_margin</item>
+        <item name="android:layout_marginRight">@dimen/dp_frame_margin</item>
+        <item name="android:background">@drawable/round_bg_ed_search</item>
+        <item name="android:paddingLeft">@dimen/dp_round_ed_search_radius</item>
+        <item name="android:paddingRight">@dimen/dp_round_ed_search_radius</item>
+        <item name="android:textSize">@dimen/dp_textsize_26</item>
+    </style>
+
+    <style name="style_img_logo">
+        <item name="android:layout_width">@dimen/dp_y249</item>
+        <item name="android:layout_height">@dimen/dp_y207</item>
+        <item name="android:layout_marginTop">@dimen/dp_y10</item>
+        <item name="android:layout_marginBottom">@dimen/dp_y10</item>
+        <item name="android:src">@mipmap/ic_logo</item>
+    </style>
+
+    <style name="style_me_tv_no_drawableRight">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dp_textsize_30</item>
+        <item name="android:layout_marginTop">@dimen/dp_y20</item>
+        <item name="android:layout_marginBottom">@dimen/dp_y20</item>
+        <item name="android:textColor">@color/color_textcolor_gray</item>
+        <item name="android:drawablePadding">@dimen/dp_x26</item>
+    </style>
+    <style name="style_me_tv" parent="style_me_tv_no_drawableRight">
+        <item name="android:drawableRight">@mipmap/ic_arrow_right</item>
+    </style>
+
+    <style name="style_pub_ll">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_y80</item>
+        <item name="android:layout_marginLeft">@dimen/dp_frame_margin</item>
+        <item name="android:layout_marginRight">@dimen/dp_frame_margin</item>
+        <item name="android:paddingTop">@dimen/dp_y5</item>
+        <item name="android:paddingBottom">@dimen/dp_y5</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="style_pub_ll_tv">
+        <item name="android:layout_width">@dimen/dp_x150</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/dp_textsize_26</item>
+    </style>
+    <style name="style_pub_ll_ed">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/bg_rect_regist_ll</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/color_textcolor_gray</item>
+        <item name="android:textSize">@dimen/dp_textsize_26</item>
+        <item name="android:padding">@dimen/x5</item>
+    </style>
+
+    <style name="style_common_btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_common_btn_height</item>
+        <item name="android:textSize">@dimen/dp_textsize_30</item>
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:layout_marginLeft">@dimen/dp_frame_margin</item>
+        <item name="android:layout_marginRight">@dimen/dp_frame_margin</item>
+        <item name="android:layout_marginTop">@dimen/dp_y72</item>
+        <item name="android:layout_marginBottom">@dimen/dp_y10</item>
+    </style>
+
+    <style name="style_record_tv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_common_title_height</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/dp_textsize_30</item>
+        <item name="android:textColor">@color/color_textcolor_gray</item>
+    </style>
+
+    <style name="style_userInfo_tv" parent="style_record_tv">
+        <item name="android:layout_marginLeft">@dimen/dp_frame_margin</item>
+        <item name="android:layout_marginRight">@dimen/dp_frame_margin</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <style name="style_splite_line_h">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_y1</item>
+        <item name="android:background">@color/color_light_gray</item>
+    </style>
+    <style name="style_splite_line_h_with_margin_frame" parent="style_splite_line_h">
+        <item name="android:layout_marginLeft">@dimen/dp_frame_margin</item>
+        <item name="android:layout_marginRight">@dimen/dp_frame_margin</item>
+    </style>
+
+</resources>

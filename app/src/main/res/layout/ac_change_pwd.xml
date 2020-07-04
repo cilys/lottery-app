@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ac_change_pwd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_title" />
+
+    <LinearLayout
+        style="@style/style_regist_item_ll"
+        android:layout_marginTop="@dimen/dp_regist_item_top" >
+        <TextView
+            style="@style/style_regist_item_ll_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="原  密  码："/>
+        <EditText
+            android:id="@+id/ed_old_pwd"
+            android:hint="请输入原密码"
+            android:inputType="textPassword"
+            style="@style/style_regist_item_ll_ed" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/style_regist_item_ll"
+        android:layout_marginTop="@dimen/dp_regist_item_margin_top" >
+        <TextView
+            style="@style/style_regist_item_ll_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新  密  码："/>
+        <EditText
+            android:id="@+id/ed_new_pwd"
+            android:hint="请输入新密码"
+            android:inputType="textPassword"
+            style="@style/style_regist_item_ll_ed" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/style_regist_item_ll"
+        android:layout_marginTop="@dimen/dp_regist_item_margin_top" >
+        <TextView
+            style="@style/style_regist_item_ll_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重复密码："/>
+        <EditText
+            android:id="@+id/ed_renew_pwd"
+            android:hint="请输入新密码"
+            android:inputType="textPassword"
+            style="@style/style_regist_item_ll_ed" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_change_pwd"
+        style="@style/style_common_btn"
+        android:background="@color/color_main"
+        android:text="修改密码"/>
+
+</LinearLayout>
