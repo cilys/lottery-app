@@ -8,9 +8,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cily.lottery.R;
+import com.cily.lottery.Sp;
 import com.cily.lottery.Utils;
 import com.cily.lottery.ac.CashAc;
 import com.cily.lottery.ac.ChangePwdAc;
+import com.cily.lottery.ac.LoginAc;
+import com.cily.lottery.ac.OrderListAc;
 import com.cily.lottery.ac.UserInfoAc;
 import com.cily.lottery.ac.UserMoneyFlowAc;
 import com.cily.lottery.bean.UserBean;
@@ -26,6 +29,10 @@ public class MeFg extends BaseFg {
 
     private TextView tv_realName, tv_sex, tv_idCard, tv_address, tv_leftMoney, tv_bankCard;
     private void initUI(View v) {
+        initTitle(v);
+        showTitleLeftImg(false);
+        setTitle("个人信息");
+
         v.findViewById(R.id.tv_change_pwd).setOnClickListener(new SingleClickListener() {
             @Override
             public void onSingleClick(View view) {
@@ -42,20 +49,20 @@ public class MeFg extends BaseFg {
         });
 
         tv_sex = (TextView)v.findViewById(R.id.tv_sex);
-        tv_sex.setOnClickListener(new SingleClickListener() {
-            @Override
-            public void onSingleClick(View view) {
-                toUserInfo();
-            }
-        });
-
+//        tv_sex.setOnClickListener(new SingleClickListener() {
+//            @Override
+//            public void onSingleClick(View view) {
+//                toUserInfo();
+//            }
+//        });
+//
         tv_realName = (TextView)v.findViewById(R.id.tv_realName);
-        tv_realName.setOnClickListener(new SingleClickListener() {
-            @Override
-            public void onSingleClick(View view) {
-                toUserInfo();
-            }
-        });
+//        tv_realName.setOnClickListener(new SingleClickListener() {
+//            @Override
+//            public void onSingleClick(View view) {
+//                toUserInfo();
+//            }
+//        });
 
         tv_idCard = (TextView)v.findViewById(R.id.tv_idCard);
         tv_idCard.setOnClickListener(new SingleClickListener() {
@@ -75,11 +82,10 @@ public class MeFg extends BaseFg {
 
         tv_leftMoney = (TextView)v.findViewById(R.id.tv_leftMoney);
 
-        findView(R.id.tv_userMomey_flow).setOnClickListener(new SingleClickListener() {
+        v.findViewById(R.id.tv_userMomey_flow).setOnClickListener(new SingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                Intent i = new Intent(getActivity(), UserMoneyFlowAc.class);
-                startActivity(i);
+                toAc(UserMoneyFlowAc.class, null);
             }
         });
 
@@ -90,7 +96,22 @@ public class MeFg extends BaseFg {
                 toUserInfo();
             }
         });
+
+        v.findViewById(R.id.tv_scheme_order).setOnClickListener(new SingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                toAc(OrderListAc.class, null);
+            }
+        });
         getUserInfo();
+
+        v.findViewById(R.id.btn_logout).setOnClickListener(new SingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                Sp.logout();
+                toAcWithFinish(LoginAc.class, null);
+            }
+        });
     }
 
     private void toCash(){
@@ -98,11 +119,12 @@ public class MeFg extends BaseFg {
             showToast("暂未获取到账户信息，请稍等..");
             return;
         }
-        Intent i = new Intent(getActivity(), CashAc.class);
-        i.putExtra("leftMoney", userBean.getLeftMoney());
-        i.putExtra("bankName", userBean.getBankName());
-        i.putExtra("bankCard", userBean.getBankCard());
-        startActivity(i);
+        Bundle i = new Bundle();
+        i.putString("leftMoney", userBean.getLeftMoney());
+        i.putString("bankName", userBean.getBankName());
+        i.putString("bankCard", userBean.getBankCard());
+
+        toAc(CashAc.class, i);
     }
 
     private void toUserInfo(){
@@ -110,15 +132,16 @@ public class MeFg extends BaseFg {
             showToast("暂未获取到账户信息，请稍等..");
             return;
         }
-        Intent i = new Intent(getActivity(), UserInfoAc.class);
-        i.putExtra("leftMoney", userBean.getLeftMoney());
-        i.putExtra("bankName", userBean.getBankName());
-        i.putExtra("bankCard", userBean.getBankCard());
-        i.putExtra("address", userBean.getAddress());
-        i.putExtra("idCard", userBean.getIdCard());
-        i.putExtra("phone", userBean.getPhone());
-        i.putExtra("sex", userBean.getSex());
-        startActivity(i);
+        Bundle i = new Bundle();
+        i.putString("leftMoney", userBean.getLeftMoney());
+        i.putString("bankName", userBean.getBankName());
+        i.putString("bankCard", userBean.getBankCard());
+        i.putString("address", userBean.getAddress());
+        i.putString("idCard", userBean.getIdCard());
+        i.putString("phone", userBean.getPhone());
+        i.putString("sex", userBean.getSex());
+
+        toAc(UserInfoAc.class, i);
     }
 
     private UserBean userBean;
@@ -128,12 +151,12 @@ public class MeFg extends BaseFg {
         this.userBean = userBean;
 
         if (userBean != null){
-            setText(tv_realName, "姓名：" + userBean.getRealName());
-            setText(tv_sex, "性别：" + Utils.fomcatSex(userBean.getSex()));
-            setText(tv_idCard, "身份证：" + Utils.fomcatStar(userBean.getIdCard()));
-            setText(tv_address, "住址：" + userBean.getAddress());
-            setText(tv_leftMoney, "余额：" + userBean.getLeftMoney());
-            setText(tv_bankCard, "卡号：" + Utils.fomcatStar(userBean.getBankCard()));
+            setText(tv_realName, "真实姓名：" + userBean.getRealName());
+            setText(tv_sex, "用户性别：" + Utils.fomcatSex(userBean.getSex()));
+            setText(tv_idCard, "身份证号：" + Utils.fomcatStar(userBean.getIdCard()));
+            setText(tv_address, "家庭住址：" + userBean.getAddress());
+            setText(tv_leftMoney, "账户余额：" + userBean.getLeftMoney());
+            setText(tv_bankCard, "银行卡号：" + Utils.fomcatStar(userBean.getBankCard()));
 
 //            Sp.putStr(Conf.SP_REAL_NAME, userBean.getRealName());
 //            Sp.putStr(Conf.SP_SEX, userBean.getSex());

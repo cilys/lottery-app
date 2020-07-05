@@ -4,7 +4,9 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.cily.lottery.Conf;
 import com.cily.lottery.R;
+import com.cily.lottery.Sp;
 import com.cily.lottery.adapter.RvUserMoneyFlowAdapter;
 import com.cily.lottery.bean.UserMoneyFlowBean;
 import com.cily.lottery.net.NetWork;
@@ -23,6 +25,8 @@ public class UserMoneyFlowAc extends BaseAc {
     @Override
     protected void initUI() {
         super.initUI();
+
+        setTitle("资金流水");
 
         datas = new ArrayList<>();
         RecyclerView rv = findView(R.id.rv);
@@ -63,7 +67,7 @@ public class UserMoneyFlowAc extends BaseAc {
         }else {
             pageNumber ++;
         }
-        NetWork.userMoneyFlow(this, pageNumber, new ResultSubscriber<UserMoneyFlowBean>() {
+        NetWork.userMoneyFlow(this, pageNumber, Sp.getStr(Conf.SP_USER_ID, null), new ResultSubscriber<UserMoneyFlowBean>() {
             @Override
             public void onSuccess(UserMoneyFlowBean userMoneyFlowBean) {
                 srlRefresh(false);

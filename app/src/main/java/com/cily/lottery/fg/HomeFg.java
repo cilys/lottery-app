@@ -19,6 +19,8 @@ public class HomeFg extends BaseFg {
     }
 
     private void initUI(View v){
-
+        initTitle(v);
+        showTitleLeftImg(false);
+        setTitle("浠水县彩票合买中心");
     }
 }

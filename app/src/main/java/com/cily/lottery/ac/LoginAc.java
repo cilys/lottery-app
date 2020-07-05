@@ -44,7 +44,7 @@ public class LoginAc extends BaseAc {
         findView(R.id.btn_regist_id).setOnClickListener(new SingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-//                toAc(RegistAc.class, null);
+                toAc(RegisterAc.class, null);
             }
         });
 
@@ -52,6 +52,7 @@ public class LoginAc extends BaseAc {
             @Override
             public void onSingleClick(View view) {
 //                toAc(ForgetAc.class, null);
+                showToast("请联系店主，重置登录密码");
             }
         });
     }

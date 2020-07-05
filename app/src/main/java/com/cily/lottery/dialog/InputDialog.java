@@ -84,18 +84,18 @@ public class InputDialog {
     }
 
     private EditText ed_input;
-    public InputDialog setMsg(String msg) {
-        if (msg == null) {
-            return this;
-        }
+    public InputDialog setMsg(CharSequence msg) {
         if (ed_input == null) {
             if (rootView != null){
                 ed_input = (EditText)rootView.findViewById(R.id.ed_input);
             }
         }
+
         if (ed_input != null){
-            ed_input.setText(msg);
-            ed_input.setSelection(msg.length());
+            if (msg != null) {
+                ed_input.setText(msg);
+                ed_input.setSelection(msg.length());
+            }
             getDialogWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
             ed_input.requestFocus();
         }

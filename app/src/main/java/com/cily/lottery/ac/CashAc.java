@@ -19,6 +19,8 @@ public class CashAc extends BaseAc {
     protected void initUI() {
         super.initUI();
 
+        showToast("申请提现");
+
         String leftMoney = getIntent().getStringExtra("leftMoney");
         leftMoney = leftMoney == null ? "0.00" : leftMoney;
         String bankName = getIntent().getStringExtra("bankName");

@@ -39,7 +39,7 @@ public abstract class BaseAc extends BaseOkHttpRxBusActivity {
     private ImageView img_back;
     private TextView tv_title;
     protected void initTitle(){
-        img_back = findView(R.id.img_back_id);
+        img_back = findView(R.id.img_back);
         if (img_back != null){
             img_back.setOnClickListener(new SingleClickListener() {
                 @Override
@@ -48,7 +48,7 @@ public abstract class BaseAc extends BaseOkHttpRxBusActivity {
                 }
             });
         }
-        tv_title = findView(R.id.tv_title_id);
+        tv_title = findView(R.id.tv_title);
     }
 
     protected void setTitle(String title){
@@ -151,5 +151,9 @@ public abstract class BaseAc extends BaseOkHttpRxBusActivity {
         if (srl != null) {
             srl.setRefreshing(refresh);
         }
+    }
+
+    protected String fomcat(String str){
+        return str == null ? "" : str;
     }
 }

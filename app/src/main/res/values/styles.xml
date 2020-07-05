@@ -107,7 +107,7 @@
         <item name="android:layout_marginTop">@dimen/dp_y20</item>
         <item name="android:layout_marginBottom">@dimen/dp_y20</item>
         <item name="android:textColor">@color/color_textcolor_gray</item>
-        <item name="android:drawablePadding">@dimen/dp_x26</item>
+        <item name="android:drawablePadding">@dimen/dp_x10</item>
     </style>
     <style name="style_me_tv" parent="style_me_tv_no_drawableRight">
         <item name="android:drawableRight">@mipmap/ic_arrow_right</item>

@@ -1,11 +1,13 @@
 package com.cily.lottery.net;
 
+import com.cily.lottery.bean.OrderBean;
 import com.cily.lottery.bean.SchemeBean;
 import com.cily.lottery.bean.UserBean;
 import com.cily.lottery.bean.UserMoneyFlowBean;
 
 import java.util.Map;
 
+import retrofit2.http.Body;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
 
@@ -27,11 +29,14 @@ public interface NetService {
 
     String URL_SCHEME_LIST = "scheme/queryAll";
 
+    String URL_ORDER_ADD = "order/add";
+
+    String URL_ORDER_LIST = "order/query";
+
+    String URL_UPDATE_USER = "user/updateInfo";
+
     @POST(NetService.URL_LOGIN)
     Observable<BaseResBean<UserBean>> login(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> map);
-
-    @POST(NetService.URL_REGIST)
-    Observable<BaseResBean> regist(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> map);
 
     @POST(NetService.URL_PWD_CHANGE)
     Observable<BaseResBean> changePwd(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> map);
@@ -45,4 +50,15 @@ public interface NetService {
     @POST(NetService.URL_SCHEME_LIST)
     Observable<BaseResBean<SchemeBean>> schemeList(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> map);
 
+    @POST(NetService.URL_ORDER_ADD)
+    Observable<BaseResBean> orderAdd(@HeaderMap Map<String, String> headers, @Body Map<String, String> map);
+
+    @POST(NetService.URL_ORDER_LIST)
+    Observable<BaseResBean<OrderBean>> orderList(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> map);
+
+    @POST(NetService.URL_UPDATE_USER)
+    Observable<BaseResBean> updateUserInfo(@HeaderMap Map<String, String> headers, @Body Map<String, String> map);
+
+    @POST(NetService.URL_REGIST)
+    Observable<BaseResBean> regist(@HeaderMap Map<String, String> headers, @Body Map<String, String> map);
 }

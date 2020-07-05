@@ -1,43 +1,37 @@
-package com.cily.lottery.fg;
+package com.cily.lottery.ac;
 
-import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.cily.lottery.R;
-import com.cily.lottery.adapter.RvSchemeAdapter;
-import com.cily.lottery.bean.SchemeBean;
+import com.cily.lottery.adapter.RvOrderAdapter;
+import com.cily.lottery.bean.OrderBean;
 import com.cily.lottery.net.NetWork;
 import com.cily.utils.app.rx.okhttp.ResultSubscriber;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SchemeFg extends BaseFg {
+public class OrderListAc extends BaseAc {
+
     @Override
-    protected View initView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View v = layoutInflater.inflate(R.layout.fg_scheme, viewGroup, false);
-        initUI(v);
-        return v;
+    protected int getLayoutId() {
+        return R.layout.ac_order_list;
     }
 
-    private RvSchemeAdapter adapter;
-    private List<SchemeBean.ItemBean> datas;
-    private void initUI(View v){
-        initTitle(v);
-        showTitleLeftImg(false);
-        setTitle("方案列表");
+    private RvOrderAdapter adapter;
+    private List<OrderBean.ItemBean> datas;
+    @Override
+    protected void initUI() {
+        super.initUI();
 
-        srl = (SwipeRefreshLayout)v.findViewById(R.id.srl);
-        RecyclerView rv = (RecyclerView)v.findViewById(R.id.rv);
+        setTitle("订单记录");
+
+        RecyclerView rv = findView(R.id.rv);
         datas = new ArrayList<>();
-        adapter = new RvSchemeAdapter(datas);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new RvOrderAdapter(datas);
+        rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
         rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -57,13 +51,6 @@ public class SchemeFg extends BaseFg {
         });
     }
 
-    @Override
-    protected void loadOnly() {
-        super.loadOnly();
-        srlRefresh(true);
-        getData(true);
-    }
-
     private int pageNumber;
     private boolean lastPage = false;
     private void getData(boolean refresh) {
@@ -76,9 +63,9 @@ public class SchemeFg extends BaseFg {
             pageNumber ++;
         }
 
-        NetWork.schemeList(this, pageNumber, "0", new ResultSubscriber<SchemeBean>() {
+        NetWork.orderList(this, pageNumber, new ResultSubscriber<OrderBean>() {
             @Override
-            public void onSuccess(SchemeBean schemeBean) {
+            public void onSuccess(OrderBean schemeBean) {
                 srlRefresh(false);
                 if (schemeBean != null){
                     pageNumber = schemeBean.getPageNumber();

@@ -1,7 +1,6 @@
 package com.cily.lottery.bean;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class SchemeBean implements Serializable {
@@ -14,6 +13,61 @@ public class SchemeBean implements Serializable {
     private boolean firstPage;
     private boolean lastPage;
 
+    public List<ItemBean> getList() {
+        return list;
+    }
+
+    public void setList(List<ItemBean> list) {
+        this.list = list;
+    }
+
+    public int getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(int pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public int getTotalRow() {
+        return totalRow;
+    }
+
+    public void setTotalRow(int totalRow) {
+        this.totalRow = totalRow;
+    }
+
+    public boolean isFirstPage() {
+        return firstPage;
+    }
+
+    public void setFirstPage(boolean firstPage) {
+        this.firstPage = firstPage;
+    }
+
+    public boolean isLastPage() {
+        return lastPage;
+    }
+
+    public void setLastPage(boolean lastPage) {
+        this.lastPage = lastPage;
+    }
 
     public static class ItemBean implements Serializable {
         private int maxUsers;

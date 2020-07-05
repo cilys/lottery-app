@@ -17,6 +17,8 @@ public class SchemeInfoAc extends BaseAc {
     protected void initUI() {
         super.initUI();
 
+        setTitle("方案详情");
+
         String totalBonus = getIntent().getStringExtra("totalBonus");
         String canUseBonus = getIntent().getStringExtra("canUseBonus");
         String totalMoney = getIntent().getStringExtra("totalMoney");
@@ -67,7 +69,5 @@ public class SchemeInfoAc extends BaseAc {
         });
     }
 
-    private String fomcat(String str){
-        return str == null ? "" : str;
-    }
+
 }

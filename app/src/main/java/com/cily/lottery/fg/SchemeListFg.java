@@ -18,21 +18,23 @@ import com.cily.utils.app.rx.okhttp.ResultSubscriber;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SchemeFg extends BaseFg {
+public class SchemeListFg extends BaseFg {
+    private String type = "0";
+
     @Override
     protected View initView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle) {
-        View v = layoutInflater.inflate(R.layout.fg_scheme, viewGroup, false);
+        View v = layoutInflater.inflate(R.layout.fg_scheme_list, viewGroup, false);
+
+        type = getArguments().getString("type", "0");
+
         initUI(v);
+
         return v;
     }
 
     private RvSchemeAdapter adapter;
     private List<SchemeBean.ItemBean> datas;
-    private void initUI(View v){
-        initTitle(v);
-        showTitleLeftImg(false);
-        setTitle("方案列表");
-
+    private void initUI(View v) {
         srl = (SwipeRefreshLayout)v.findViewById(R.id.srl);
         RecyclerView rv = (RecyclerView)v.findViewById(R.id.rv);
         datas = new ArrayList<>();
@@ -76,7 +78,7 @@ public class SchemeFg extends BaseFg {
             pageNumber ++;
         }
 
-        NetWork.schemeList(this, pageNumber, "0", new ResultSubscriber<SchemeBean>() {
+        NetWork.schemeList(this, pageNumber, "1", new ResultSubscriber<SchemeBean>() {
             @Override
             public void onSuccess(SchemeBean schemeBean) {
                 srlRefresh(false);

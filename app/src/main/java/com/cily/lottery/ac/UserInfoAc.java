@@ -5,7 +5,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.cily.lottery.Conf;
@@ -13,7 +12,9 @@ import com.cily.lottery.R;
 import com.cily.lottery.Sp;
 import com.cily.lottery.Utils;
 import com.cily.lottery.dialog.InputDialog;
+import com.cily.lottery.net.NetWork;
 import com.cily.utils.app.listener.SingleClickListener;
+import com.cily.utils.app.rx.okhttp.ResultSubscriber;
 
 public class UserInfoAc extends BaseAc {
 
@@ -26,6 +27,8 @@ public class UserInfoAc extends BaseAc {
     @Override
     protected void initUI() {
         super.initUI();
+
+        setTitle("个人信息");
 
         leftMoney = getIntent().getStringExtra("leftMoney");
         leftMoney = leftMoney == null ? "" : leftMoney;
@@ -50,6 +53,8 @@ public class UserInfoAc extends BaseAc {
 
         TextView tv_userName = findView(R.id.tv_userName);
         setText(tv_userName, "用户账号：" + Sp.getStr(Conf.SP_USER_NAME, ""));
+
+
 
         TextView tv_realName = findView(R.id.tv_realName);
         setText(tv_realName, "真实姓名：" + Sp.getStr(Conf.SP_REAL_NAME, ""));
@@ -139,5 +144,19 @@ public class UserInfoAc extends BaseAc {
             inputDialog.dismiss();
         }
         inputDialog = null;
+    }
+
+    private void updateUserInfo(){
+        NetWork.updateUserInfo(this, new ResultSubscriber() {
+            @Override
+            public void onSuccess(Object o) {
+
+            }
+
+            @Override
+            public void onFailure(String s, String s1) {
+
+            }
+        });
     }
 }

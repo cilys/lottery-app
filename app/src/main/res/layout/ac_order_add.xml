@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ac.SchemeInfoAc">
+
+    <include layout="@layout/common_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_frame_margin"
+            android:paddingRight="@dimen/dp_frame_margin"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/style_me_tv_no_drawableRight"
+                android:text="方案名称：" />
+            <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_totalMoney"
+                style="@style/style_me_tv_no_drawableRight"
+                android:text="总金额："/>
+            <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_leftMoney"
+                style="@style/style_me_tv_no_drawableRight"
+                android:text="剩余额度："/>
+            <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_order"
+                style="@style/style_me_tv"
+                android:text="购买额度：" />
+            <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_payType"
+                style="@style/style_me_tv"
+                android:text="支付方式：" />
+            <View style="@style/style_splite_line_h" />
+
+            <Button
+                android:id="@+id/btn_commit"
+                style="@style/style_bg_login_regist_btn"
+                android:layout_width="match_parent"
+                android:text="提交" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

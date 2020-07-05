@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">lottery-app</string>
+    <string name="app_name">合彩大厅</string>
 
     <string name="str_no_net">网络异常，请检查网络</string>
+
+    <string name="str_info">
+        彩票合买大厅是提供彩民参与合买合合买方案招募资金的一个彩票代购平台。\n\n合买彩票中奖怎么分配？\n按照各自出资比例，对中奖金额进行按比分配。\n\n\n怎么付款？\n账户余额、合买群、微信红包等各种方式进行付款。\n\n\n商家可信吗？\n商家是浠水本地人，彩票店的地址是红花路88号，大家可以亲自上门，可以说加入合买群的都是附近的街边的人，只不过大家喜欢博彩，所以加入。
+    </string>
 </resources>

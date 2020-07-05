@@ -13,9 +13,6 @@ import com.cily.utils.app.rx.RxBus;
 import com.cily.utils.app.rx.okhttp.ResultSubscriber;
 import com.cily.utils.base.StrUtils;
 
-import static com.cily.lottery.ac.LoginAc.REGX_PWD;
-
-
 public class ChangePwdAc extends BaseAc {
 
     @Override
@@ -70,7 +67,7 @@ public class ChangePwdAc extends BaseAc {
             showToast("新密码与原密码相同");
             return;
         }
-        if (!oldPwd.matches(REGX_PWD) || !newPwd.matches(REGX_PWD)){
+        if (!oldPwd.matches(LoginAc.REGX_PWD) || !newPwd.matches(LoginAc.REGX_PWD)){
             showToast("密码需是6至16位的字母、数字");
             return;
         }

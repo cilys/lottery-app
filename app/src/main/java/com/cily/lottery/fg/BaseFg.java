@@ -1,5 +1,8 @@
 package com.cily.lottery.fg;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,7 +29,7 @@ public abstract class BaseFg extends BaseOkHttpRxBusLazyFragment {
     private TextView tv_title;
 
     protected void initTitle(View v){
-        img_back = (ImageView)v.findViewById(R.id.img_back_id);
+        img_back = (ImageView)v.findViewById(R.id.img_back);
         if (img_back != null){
             img_back.setOnClickListener(new SingleClickListener() {
                 @Override
@@ -35,7 +38,7 @@ public abstract class BaseFg extends BaseOkHttpRxBusLazyFragment {
                 }
             });
         }
-        tv_title = (TextView)v.findViewById(R.id.tv_title_id);
+        tv_title = (TextView)v.findViewById(R.id.tv_title);
     }
     protected void showTitleLeftImg(boolean show){
         if (img_back != null){
@@ -102,6 +105,23 @@ public abstract class BaseFg extends BaseOkHttpRxBusLazyFragment {
     protected void srlRefresh(boolean refresh) {
         if (srl != null) {
             srl.setRefreshing(refresh);
+        }
+    }
+
+    protected void toAc(Class<? extends Activity> cls, Bundle bundle){
+        if (getActivity() != null) {
+            Intent i = new Intent(getActivity(), cls);
+            if (bundle != null) {
+                i.putExtras(bundle);
+            }
+            startActivity(i);
+        }
+    }
+
+    protected void toAcWithFinish(Class<? extends Activity> cls, Bundle bundle){
+        toAc(cls, bundle);
+        if (getActivity() != null){
+            getActivity().finish();
         }
     }
 }

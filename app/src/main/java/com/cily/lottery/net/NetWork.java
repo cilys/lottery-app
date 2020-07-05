@@ -3,6 +3,7 @@ package com.cily.lottery.net;
 import com.cily.lottery.BuildConfig;
 import com.cily.lottery.Conf;
 import com.cily.lottery.Sp;
+import com.cily.lottery.bean.OrderBean;
 import com.cily.lottery.bean.SchemeBean;
 import com.cily.lottery.bean.UserBean;
 import com.cily.lottery.bean.UserMoneyFlowBean;
@@ -63,9 +64,16 @@ public class NetWork {
         toSub(ob, rs);
     }
 
-    public final static void regist(LifecycleProvider lp, String userName,
-                                    String pwd, String realName, String idCard,
-                                    String phone, String sex,
+    public final static void regist(LifecycleProvider lp,
+                                    String userName,
+                                    String pwd,
+                                    String realName,
+                                    String sex,
+                                    String phone,
+                                    String idCard,
+                                    String address,
+                                    String bankName,
+                                    String bankCard,
                                     ResultSubscriber rs){
         if (lp == null){
             return;
@@ -74,12 +82,23 @@ public class NetWork {
         map.put("userName", userName);
         map.put("pwd", pwd);
         map.put("realName", realName);
-        map.put("idCard", idCard);
+        if (!StrUtils.isEmpty(sex)){
+            map.put("sex", sex);
+        }
         if (!StrUtils.isEmpty(phone)){
             map.put("phone", phone);
         }
-        if (!StrUtils.isEmpty(sex)){
-            map.put("sex", sex);
+        if (!StrUtils.isEmpty(idCard)) {
+            map.put("idCard", idCard);
+        }
+        if (!StrUtils.isEmpty(address)){
+            map.put("address", address);
+        }
+        if (!StrUtils.isEmpty(bankName)){
+            map.put("bankName", bankName);
+        }
+        if (!StrUtils.isEmpty(bankCard)){
+            map.put("bankCard", bankCard);
         }
 
         Observable ob = getService().regist(headers(), map)
@@ -130,7 +149,7 @@ public class NetWork {
     }
 
     public final static void userMoneyFlow(LifecycleProvider lp,
-                                      int pageNumber,
+                                      int pageNumber, String userId,
                                       ResultSubscriber<UserMoneyFlowBean> rs){
         if (lp == null){
             return;
@@ -138,6 +157,9 @@ public class NetWork {
         Map<String, String> map = new HashMap<>();
         map.put("pageNumber", String.valueOf(pageNumber));
         map.put("pageSize", String.valueOf(Conf.PAGE_SIZE));
+        if (!StrUtils.isEmpty(userId)) {
+            map.put("userId", userId);
+        }
 
         Observable ob = getService().userMoneyFlow(headers(), map)
                 .map(new BaseEntity<UserMoneyFlowBean>()).compose(lp.bindToLifecycle());
@@ -146,6 +168,7 @@ public class NetWork {
     }
 
     public final static void schemeList(LifecycleProvider lp, int pageNumber,
+                                           String outTimeType,
                                            ResultSubscriber<SchemeBean> rs){
         if (lp == null){
             return;
@@ -153,9 +176,55 @@ public class NetWork {
         Map<String, String> map = new HashMap<>();
         map.put("pageNumber", String.valueOf(pageNumber));
         map.put("pageSize", String.valueOf(Conf.PAGE_SIZE));
+        map.put("outTimeType", outTimeType);//空、0、当前时间以后，1历史（当前时间之前），2全部
 
         Observable ob = getService().schemeList(headers(), map)
                 .map(new BaseEntity<SchemeBean>()).compose(lp.bindToLifecycle());
+
+        toSub(ob, rs);
+    }
+    public final static void orderAdd(LifecycleProvider lp, String schemeId,
+                                        String money, String payType,
+                                        ResultSubscriber rs){
+        if (lp == null){
+            return;
+        }
+        Map<String, String> map = new HashMap<>();
+        map.put("schemeId", schemeId);
+        map.put("money", money);
+        map.put("payType", payType);
+
+        Observable ob = getService().orderAdd(headers(), map)
+                .map(new BaseEntity()).compose(lp.bindToLifecycle());
+
+        toSub(ob, rs);
+    }
+
+    public final static void orderList(LifecycleProvider lp, int pageNumber,
+                                        ResultSubscriber<OrderBean> rs){
+        if (lp == null){
+            return;
+        }
+        Map<String, String> map = new HashMap<>();
+        map.put("pageNumber", String.valueOf(pageNumber));
+        map.put("pageSize", String.valueOf(Conf.PAGE_SIZE));
+
+        Observable ob = getService().orderList(headers(), map)
+                .map(new BaseEntity<OrderBean>()).compose(lp.bindToLifecycle());
+
+        toSub(ob, rs);
+    }
+
+    public final static void updateUserInfo(LifecycleProvider lp,
+                                      ResultSubscriber rs){
+        if (lp == null){
+            return;
+        }
+        Map<String, String> map = new HashMap<>();
+
+
+        Observable ob = getService().updateUserInfo(headers(), map)
+                .map(new BaseEntity()).compose(lp.bindToLifecycle());
 
         toSub(ob, rs);
     }
