@@ -100,6 +100,15 @@
         <item name="android:src">@mipmap/ic_logo</item>
     </style>
 
+    <style name="style_item_info">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dp_textsize_30</item>
+        <item name="android:paddingTop">@dimen/dp_y10</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
     <style name="style_me_tv_no_drawableRight">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

@@ -3,6 +3,7 @@ package com.cily.lottery.fg;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
@@ -88,7 +89,14 @@ public abstract class BaseFg extends BaseOkHttpRxBusLazyFragment {
             return false;
         }
         showLoading(loadingText);
+        startTimer();
         return true;
+    }
+
+    @Override
+    protected void disLoading() {
+        super.disLoading();
+        stopTimer();
     }
 
     protected void setText(TextView tv, String value){
@@ -105,6 +113,36 @@ public abstract class BaseFg extends BaseOkHttpRxBusLazyFragment {
     protected void srlRefresh(boolean refresh) {
         if (srl != null) {
             srl.setRefreshing(refresh);
+        }
+        if (refresh){
+            startTimer();
+        }else {
+            stopTimer();
+        }
+    }
+
+    private CountDownTimer cdt;
+    protected void startTimer(){
+        stopTimer();
+        if (cdt == null) {
+            cdt = new CountDownTimer(45000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+
+                }
+
+                @Override
+                public void onFinish() {
+                    srlRefresh(false);
+                    disLoading();
+                }
+            };
+        }
+        cdt.start();
+    }
+    protected void stopTimer(){
+        if (cdt != null){
+            cdt.cancel();
         }
     }
 

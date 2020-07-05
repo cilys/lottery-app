@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/style_pub_ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/dp_y20"
+    android:paddingRight="@dimen/dp_y20"
+    android:paddingTop="@dimen/dp_y20"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_info"
-        style="@style/style_me_tv_no_drawableRight"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:id="@+id/tv_payType"
+        style="@style/style_item_info" />
 
     <View
         style="@style/style_splite_line_h" />

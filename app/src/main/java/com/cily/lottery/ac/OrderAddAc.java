@@ -24,7 +24,6 @@ public class OrderAddAc extends BaseAc {
     private String buyMoney = "10.00";
     private String payType = PayType.YU_E;   //1余额支付，2微信支付，3支付宝支付，4银联支付，5现金支付
     private BigDecimal TOTAL_MONEY, LEFT_MONEY;
-    private final BigDecimal ZERO = Utils.toBigDecimal("0.00");
 
     @Override
     protected void initUI() {

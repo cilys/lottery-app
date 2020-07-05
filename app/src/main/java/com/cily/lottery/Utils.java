@@ -84,4 +84,16 @@ public class Utils {
 
         return b;
     }
+
+    public static String fomcatStatus(String status){
+        if (StrUtils.isEmpty(status)){
+            return "正常";
+        }
+        if ("0".equals(status)){
+            return "正常";
+        } else if ("1".equals(status)){
+            return "禁用";
+        }
+        return status;
+    }
 }

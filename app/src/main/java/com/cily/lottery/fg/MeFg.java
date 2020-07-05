@@ -36,8 +36,7 @@ public class MeFg extends BaseFg {
         v.findViewById(R.id.tv_change_pwd).setOnClickListener(new SingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                Intent i = new Intent(getActivity(), ChangePwdAc.class);
-                startActivity(i);
+                toAc(ChangePwdAc.class, null);
             }
         });
 
@@ -103,7 +102,7 @@ public class MeFg extends BaseFg {
                 toAc(OrderListAc.class, null);
             }
         });
-        getUserInfo();
+
 
         v.findViewById(R.id.btn_logout).setOnClickListener(new SingleClickListener() {
             @Override
@@ -112,6 +111,13 @@ public class MeFg extends BaseFg {
                 toAcWithFinish(LoginAc.class, null);
             }
         });
+    }
+
+    @Override
+    protected void loadOnly() {
+        super.loadOnly();
+
+        getUserInfo();
     }
 
     private void toCash(){

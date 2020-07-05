@@ -1,15 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/style_pub_ll"
-    android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_info"
-        style="@style/style_me_tv_no_drawableRight"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_y10"
+        android:paddingLeft="@dimen/dp_y20"
+        android:paddingRight="@dimen/dp_y20"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/style_item_info"
+            android:text="方案名称：" />
 
-    <View
-        style="@style/style_splite_line_h" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_totalMoney"
+            style="@style/style_item_info"
+            android:text="方案总额：" />
+
+        <TextView
+            android:id="@+id/tv_selledMoney"
+            style="@style/style_item_info"
+            android:text="已售金额：" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            style="@style/style_item_info"
+            android:text="方案状态：" />
+
+        <TextView
+            android:id="@+id/tv_outOfTime"
+            style="@style/style_item_info"
+            android:paddingBottom="@dimen/dp_y20"
+            android:text="最后期限：" />
+        <View
+            style="@style/style_splite_line_h" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_bonus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/dp_y20"
+        android:visibility="visible"
+        android:src="@mipmap/icon_bonus" />
+</RelativeLayout>

@@ -74,7 +74,7 @@ public class SchemeListFg extends BaseFg {
         }
         if (refresh){
             pageNumber = 1;
-        }else {
+        } else {
             pageNumber ++;
         }
 

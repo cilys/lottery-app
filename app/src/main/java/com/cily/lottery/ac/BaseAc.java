@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.cily.lottery.Conf;
 import com.cily.lottery.R;
 import com.cily.lottery.Sp;
+import com.cily.lottery.Utils;
 import com.cily.lottery.ac.LoginAc;
 import com.cily.lottery.bean.UserBean;
 import com.cily.lottery.net.NetWork;
@@ -20,12 +21,16 @@ import com.cily.utils.app.rx.okhttp.ResultSubscriber;
 import com.cily.utils.app.utils.NetUtils;
 import com.cily.utils.base.StrUtils;
 
+import java.math.BigDecimal;
+
 
 /**
  * Created by admin on 2018/4/12.
  */
 
 public abstract class BaseAc extends BaseOkHttpRxBusActivity {
+    public final static BigDecimal ZERO = Utils.toBigDecimal("0.00");
+
 
     @Override
     protected final void onCreate(@Nullable Bundle savedInstanceState) {
