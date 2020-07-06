@@ -5,12 +5,35 @@
     android:paddingLeft="@dimen/dp_y20"
     android:paddingRight="@dimen/dp_y20"
     android:paddingTop="@dimen/dp_y20"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_payType"
-        style="@style/style_item_info" />
+        android:id="@+id/tv_money"
+        style="@style/style_item_info"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/dp_textsize_40"
+        android:text="+100.00"/>
 
-    <View
-        style="@style/style_splite_line_h" />
+    <TextView
+        android:id="@+id/tv_payType"
+        style="@style/style_item_info"
+        android:text="支付方式：" />
+
+    <TextView
+        android:id="@+id/tv_payStatus"
+        style="@style/style_item_info"
+        android:text="资金状态："/>
+
+    <TextView
+        android:id="@+id/tv_schemeName"
+        style="@style/style_item_info"
+        android:text="方案名称：" />
+    <TextView
+        android:id="@+id/tv_createTime"
+        style="@style/style_item_info"
+        android:text="交易时间："
+        android:paddingBottom="@dimen/dp_y20"/>
+
+    <View style="@style/style_splite_line_h" />
 </LinearLayout>

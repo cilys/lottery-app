@@ -67,7 +67,7 @@ public class OrderAddAc extends BaseAc {
         });
 
         final TextView tv_payType = findView(R.id.tv_payType);
-        setText(tv_payType, "支付方式：" + PayType.codeToStr(payType));
+        setText(tv_payType, "支付方式：" + PayType.fomcatPayType(payType));
 
         tv_payType.setOnClickListener(new SingleClickListener() {
             @Override
@@ -109,7 +109,7 @@ public class OrderAddAc extends BaseAc {
                     public void onClick(DialogInterface dialog, int which) {
                         payType = PayType.PAY_TYPES[which];
                         if (tv != null){
-                            setText(tv, PayType.codeToStr(payType));
+                            setText(tv, PayType.fomcatPayType(payType));
                         }
                     }
                 }).create().show();

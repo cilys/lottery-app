@@ -83,7 +83,8 @@
 
             <Button
                 android:id="@+id/btn_commit"
-                style="@style/style_bg_login_regist_btn"
+                style="@style/style_common_btn"
+                android:background="@color/color_main"
                 android:text="购买" />
         </LinearLayout>
     </ScrollView>

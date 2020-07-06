@@ -1,12 +1,15 @@
 package com.cily.lottery.ac;
 
+import android.os.Bundle;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.cily.lottery.Conf;
 import com.cily.lottery.R;
 import com.cily.lottery.Sp;
+import com.cily.lottery.adapter.Adapter;
 import com.cily.lottery.adapter.RvUserMoneyFlowAdapter;
 import com.cily.lottery.bean.UserMoneyFlowBean;
 import com.cily.lottery.net.NetWork;
@@ -48,6 +51,20 @@ public class UserMoneyFlowAc extends BaseAc {
                         getData(false);
                     }
                 }
+            }
+        });
+
+        adapter.setOnItemClickListener(new Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Bundle bundle = new Bundle();
+                bundle.putString("sourceUserName", datas.get(position).getSourceUserName());
+                bundle.putString("schemeName", datas.get(position).getSchemeName());
+                bundle.putString("payType", datas.get(position).getPayType());
+                bundle.putString("money", datas.get(position).getMoney());
+                bundle.putString("createTime", datas.get(position).getCreateTime());
+                bundle.putString("isAddToUser", datas.get(position).getIsAddToUser());
+                toAc(UserMoneyFlowInfoAc.class, bundle);
             }
         });
 

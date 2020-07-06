@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ac.SchemeInfoAc">
+
+    <include layout="@layout/common_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_frame_margin"
+            android:paddingRight="@dimen/dp_frame_margin"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_money"
+                style="@style/style_me_tv_no_drawableRight"
+                android:text="资金金额：" />
+            <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_payType"
+                style="@style/style_me_tv_no_drawableRight"
+                android:text="支付方式："/>
+            <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_isAddToUser"
+                style="@style/style_me_tv_no_drawableRight"
+                android:text="资金状态："/>
+            <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_sourceUserName"
+                style="@style/style_me_tv_no_drawableRight"
+                android:text="资金来源：" />
+            <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_schemeName"
+                style="@style/style_me_tv_no_drawableRight"
+                android:text="方案名称：" />
+            <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_createTime"
+                style="@style/style_me_tv_no_drawableRight"
+                android:text="创建时间：" />
+            <View style="@style/style_splite_line_h" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.cily.lottery.ac;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,7 +17,6 @@ public class SchemeInfoAc extends BaseAc {
     @Override
     protected void initUI() {
         super.initUI();
-
         setTitle("方案详情");
 
         String totalBonus = getIntent().getStringExtra("totalBonus");
@@ -64,7 +64,12 @@ public class SchemeInfoAc extends BaseAc {
         findView(R.id.btn_commit).setOnClickListener(new SingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-
+                Bundle bundle = new Bundle();
+                bundle.putString("totalMoney", totalMoney);
+                bundle.putString("selledMoney", selledMoney);
+                bundle.putString("name", name);
+                bundle.putString("id", id);
+                toAc(OrderAddAc.class, bundle);
             }
         });
     }

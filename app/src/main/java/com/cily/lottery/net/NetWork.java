@@ -215,13 +215,20 @@ public class NetWork {
         toSub(ob, rs);
     }
 
-    public final static void updateUserInfo(LifecycleProvider lp,
+    public final static void updateUserInfo(LifecycleProvider lp, String sex,
+                                            String phone, String idCard, String address,
+                                            String bankName, String bankCard,
                                       ResultSubscriber rs){
         if (lp == null){
             return;
         }
         Map<String, String> map = new HashMap<>();
-
+        map.put("sex", sex);
+        map.put("phone", phone);
+        map.put("idCard", idCard);
+        map.put("address", address);
+        map.put("bankName", bankName);
+        map.put("bankCard", bankCard);
 
         Observable ob = getService().updateUserInfo(headers(), map)
                 .map(new BaseEntity()).compose(lp.bindToLifecycle());
