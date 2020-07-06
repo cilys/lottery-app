@@ -8,36 +8,6 @@
 
     <include layout="@layout/common_title" />
 
-    <ImageView
-        android:id="@+id/img_avatar_id"
-        android:layout_marginTop="@dimen/dp_y72"
-        android:layout_marginBottom="@dimen/dp_frame_margin"
-        android:layout_width="@dimen/dp_x150"
-        android:layout_height="@dimen/dp_x150"
-        android:src="@mipmap/default_avatar_170"/>
-
-    <TextView
-        android:id="@+id/tv_user_realName_id"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_round_ed_search_height"
-        android:text="李四"
-        android:textSize="@dimen/dp_textsize_30"
-        android:paddingLeft="@dimen/dp_x60"
-        android:paddingRight="@dimen/dp_x60"
-        android:gravity="center"
-        android:visibility="gone"
-        android:layout_marginBottom="@dimen/dp_frame_margin"
-        android:background="@drawable/round_bg_user_realname"/>
-
-    <TextView
-        android:id="@+id/tv_userName_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:textSize="@dimen/dp_textsize_28"
-        android:layout_marginBottom="@dimen/dp_y48"
-        android:text="账号：13201234567"/>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,35 +17,78 @@
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/dp_frame_margin"
             android:paddingRight="@dimen/dp_frame_margin"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_avatar_id"
+                android:layout_marginTop="@dimen/dp_frame_margin"
+                android:layout_marginBottom="@dimen/dp_frame_margin"
+                android:layout_width="@dimen/dp_x150"
+                android:layout_height="@dimen/dp_x150"
+                android:src="@mipmap/default_avatar_170"/>
+
+            <TextView
+                android:id="@+id/tv_user_realName_id"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_round_ed_search_height"
+                android:text="李四"
+                android:textSize="@dimen/dp_textsize_30"
+                android:paddingLeft="@dimen/dp_x60"
+                android:paddingRight="@dimen/dp_x60"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/dp_frame_margin"
+                android:background="@drawable/round_bg_user_realname"/>
+
+            <TextView
+                android:id="@+id/tv_userName_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="@dimen/dp_textsize_28"
+                android:layout_marginBottom="@dimen/dp_y48"
+                android:text="账号：13201234567"/>
+
             <TextView
                 android:id="@+id/tv_realName"
                 style="@style/style_me_tv_no_drawableRight"
                 android:text="真实姓名："/>
             <View style="@style/style_splite_line_h" />
+            <TextView
+                android:id="@+id/tv_phone"
+                style="@style/style_me_tv"
+                android:text="手机号码："/>
+            <View style="@style/style_splite_line_h" />
 
             <TextView
                 android:id="@+id/tv_sex"
-                style="@style/style_me_tv_no_drawableRight"
+                style="@style/style_me_tv"
                 android:text="用户性别："/>
             <View style="@style/style_splite_line_h" />
 
             <TextView
                 android:id="@+id/tv_idCard"
-                style="@style/style_me_tv_no_drawableRight"
+                style="@style/style_me_tv"
                 android:text="身份证号："/>
             <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_change_pwd"
+                style="@style/style_me_tv"
+                android:text="修改密码" />
+            <View style="@style/style_splite_line_h" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_frame_margin"
+                android:background="@color/color_light_gray"/>
 
             <TextView
                 android:id="@+id/tv_leftMoney"
                 style="@style/style_me_tv_no_drawableRight"
                 android:text="账户余额：" />
             <View style="@style/style_splite_line_h" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@color/color_light_gray"/>
 
             <TextView
                 android:id="@+id/tv_address"
@@ -88,11 +101,6 @@
                 style="@style/style_me_tv"
                 android:text="银行卡号：" />
             <View style="@style/style_splite_line_h" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@color/color_light_gray"/>
 
             <TextView
                 android:id="@+id/tv_userMomey_flow"
@@ -110,12 +118,6 @@
                 android:id="@+id/tv_cash"
                 style="@style/style_me_tv"
                 android:text="申请提现：" />
-            <View style="@style/style_splite_line_h" />
-
-            <TextView
-                android:id="@+id/tv_change_pwd"
-                style="@style/style_me_tv"
-                android:text="修改密码" />
             <View style="@style/style_splite_line_h" />
 
             <Button

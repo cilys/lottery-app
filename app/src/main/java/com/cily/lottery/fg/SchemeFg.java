@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.cily.lottery.R;
 import com.cily.lottery.ac.SchemeInfoAc;
+import com.cily.lottery.ac.SchemeListAc;
 import com.cily.lottery.adapter.RvSchemeAdapter;
 import com.cily.lottery.bean.SchemeBean;
 import com.cily.lottery.net.NetWork;
@@ -33,6 +34,7 @@ public class SchemeFg extends BaseFg {
         initTitle(v);
         showTitleLeftImg(false);
         setTitle("方案列表");
+        showTitleRightImg(true, R.mipmap.ic_history_white);
 
         srl = (SwipeRefreshLayout)v.findViewById(R.id.srl);
         RecyclerView rv = (RecyclerView)v.findViewById(R.id.rv);
@@ -76,6 +78,12 @@ public class SchemeFg extends BaseFg {
                 toAc(SchemeInfoAc.class, bundle);
             }
         });
+    }
+
+    @Override
+    protected void onClickTitleRightImg() {
+        super.onClickTitleRightImg();
+        toAc(SchemeListAc.class, null);
     }
 
     @Override

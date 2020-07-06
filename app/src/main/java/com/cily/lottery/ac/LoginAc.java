@@ -88,6 +88,7 @@ public class LoginAc extends BaseAc {
                     Sp.putStr(Conf.SP_PWD, pwd);
                     Sp.putStr(Conf.SP_USER_ID, userBean.getUserId());
                     Sp.putStr(Conf.SP_REAL_NAME, userBean.getRealName());
+                    Sp.putStr(Conf.SP_LEFT_MONEY, userBean.getLeftMoney());
                     toAcWithFinish(MainAc.class, null);
                 }else {
                     showToast("登录失败，请重试...");

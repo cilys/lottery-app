@@ -1,9 +1,11 @@
 package com.cily.lottery.fg;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.DrawableRes;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,6 +30,7 @@ import com.cily.utils.base.StrUtils;
 public abstract class BaseFg extends BaseOkHttpRxBusLazyFragment {
     private ImageView img_back;
     private TextView tv_title;
+    private ImageView img_right;
 
     protected void initTitle(View v){
         img_back = (ImageView)v.findViewById(R.id.img_back);
@@ -40,6 +43,29 @@ public abstract class BaseFg extends BaseOkHttpRxBusLazyFragment {
             });
         }
         tv_title = (TextView)v.findViewById(R.id.tv_title);
+        img_right = (ImageView)v.findViewById(R.id.img_right);
+        if (img_right != null){
+            img_right.setOnClickListener(new SingleClickListener() {
+                @Override
+                public void onSingleClick(View view) {
+                    onClickTitleRightImg();
+                }
+            });
+        }
+    }
+    @SuppressLint("ResourceType")
+    protected void showTitleRightImg(boolean show, @DrawableRes int icon){
+        if (img_right != null){
+            img_right.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+            if (icon < 0){
+
+            }else {
+                img_right.setImageResource(icon);
+            }
+        }
+    }
+    protected void onClickTitleRightImg(){
+
     }
     protected void showTitleLeftImg(boolean show){
         if (img_back != null){
@@ -59,9 +85,13 @@ public abstract class BaseFg extends BaseOkHttpRxBusLazyFragment {
         }
     }
 
-    protected void getUserInfo(){
-        if (!loading("加载中...", true)){
-            return;
+    protected void getUserInfo(boolean showLoading){
+        if (showLoading) {
+            if (!loading("加载中...", true)) {
+                return;
+            }
+        } else {
+
         }
         NetWork.userInfo(this, Sp.getStr(Conf.SP_USER_ID, null), new ResultSubscriber<UserBean>() {
             @Override

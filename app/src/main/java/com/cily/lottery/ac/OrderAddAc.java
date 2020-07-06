@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.view.View;
 import android.widget.TextView;
 
+import com.cily.lottery.Conf;
 import com.cily.lottery.PayType;
 import com.cily.lottery.R;
+import com.cily.lottery.Sp;
 import com.cily.lottery.Utils;
 import com.cily.lottery.net.NetWork;
 import com.cily.utils.app.listener.SingleClickListener;
@@ -121,6 +123,16 @@ public class OrderAddAc extends BaseAc {
             showToast("请选择合适的购买额度");
             return;
         }
+
+        String userLeftMoney = Sp.getStr(Conf.SP_LEFT_MONEY, "0.00");
+        BigDecimal leftMoney = Utils.toBigDecimal(userLeftMoney, ZERO);
+        if (Utils.noLessThan(leftMoney, buy)){
+
+        }else {
+            showToast("账户余额不足，请充值..");
+            return;
+        }
+
         if (!loading("请求中..", true)){
             return;
         }

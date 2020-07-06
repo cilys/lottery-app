@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.cily.lottery.Conf;
 import com.cily.lottery.R;
 import com.cily.lottery.Sp;
 import com.cily.lottery.Utils;
@@ -27,7 +28,7 @@ public class MeFg extends BaseFg {
         return v;
     }
 
-    private TextView tv_realName, tv_sex, tv_idCard, tv_address, tv_leftMoney, tv_bankCard;
+    private TextView tv_realName, tv_phone, tv_sex, tv_idCard, tv_address, tv_leftMoney, tv_bankCard;
     private void initUI(View v) {
         initTitle(v);
         showTitleLeftImg(false);
@@ -48,13 +49,13 @@ public class MeFg extends BaseFg {
         });
 
         tv_sex = (TextView)v.findViewById(R.id.tv_sex);
-//        tv_sex.setOnClickListener(new SingleClickListener() {
-//            @Override
-//            public void onSingleClick(View view) {
-//                toUserInfo();
-//            }
-//        });
-//
+        tv_sex.setOnClickListener(new SingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                toUserInfo();
+            }
+        });
+
         tv_realName = (TextView)v.findViewById(R.id.tv_realName);
 //        tv_realName.setOnClickListener(new SingleClickListener() {
 //            @Override
@@ -65,6 +66,13 @@ public class MeFg extends BaseFg {
 
         tv_idCard = (TextView)v.findViewById(R.id.tv_idCard);
         tv_idCard.setOnClickListener(new SingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                toUserInfo();
+            }
+        });
+        tv_phone = (TextView)v.findViewById(R.id.tv_phone);
+        tv_phone.setOnClickListener(new SingleClickListener() {
             @Override
             public void onSingleClick(View view) {
                 toUserInfo();
@@ -117,7 +125,7 @@ public class MeFg extends BaseFg {
     protected void loadOnly() {
         super.loadOnly();
 
-        getUserInfo();
+        getUserInfo(true);
     }
 
     private void toCash(){
@@ -163,13 +171,13 @@ public class MeFg extends BaseFg {
             setText(tv_address, "家庭住址：" + userBean.getAddress());
             setText(tv_leftMoney, "账户余额：" + userBean.getLeftMoney());
             setText(tv_bankCard, "银行卡号：" + Utils.fomcatStar(userBean.getBankCard()));
-
+            setText(tv_phone, "手机号码：" + userBean.getPhone());
 //            Sp.putStr(Conf.SP_REAL_NAME, userBean.getRealName());
 //            Sp.putStr(Conf.SP_SEX, userBean.getSex());
 //            Sp.putStr(Conf.SP_PHONE, userBean.getPhone());
 //            Sp.putStr(Conf.SP_ADDRESS, userBean.getAddress());
 //            Sp.putStr(Conf.SP_IDCARD, userBean.getIdCard());
-//            Sp.putStr(Conf.SP_LEFT_MONEY, userBean.getLeftMoney());
+            Sp.putStr(Conf.SP_LEFT_MONEY, userBean.getLeftMoney());
 //            Sp.putStr(Conf.SP_BANK_NAME, userBean.getBankName());
 //            Sp.putStr(Conf.SP_BANK_CARD, userBean.getBankCard());
         }

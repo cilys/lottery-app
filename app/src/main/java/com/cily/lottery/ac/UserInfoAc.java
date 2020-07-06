@@ -73,7 +73,7 @@ public class UserInfoAc extends BaseAc {
         tv_idCard.setOnClickListener(new SingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                showInputDialog("身份证号：", phone, tv_phone);
+                showInputDialog("身份证号：", idCard, tv_idCard);
             }
         });
 
@@ -161,6 +161,7 @@ public class UserInfoAc extends BaseAc {
                             tv.setTag(input.toString());
                         }
                     }
+                    dismissInputDialog();
                 }
         }).show();
     }
@@ -173,15 +174,20 @@ public class UserInfoAc extends BaseAc {
 
     private void updateUserInfo(String sex, String phone, String idCard,
                                 String address, String bankName, String bankCard){
+        if (!loading("请求中...", true)){
+            return;
+        }
         NetWork.updateUserInfo(this, sex, phone, idCard, address, bankName, bankCard, new ResultSubscriber() {
             @Override
             public void onSuccess(Object o) {
-
+                showToast("更新成功");
+                disLoading();
             }
 
             @Override
             public void onFailure(String s, String s1) {
-
+                disLoading();
+                showToast(s1);
             }
         });
     }

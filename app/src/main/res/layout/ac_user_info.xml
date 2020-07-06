@@ -75,7 +75,7 @@
                 android:id="@+id/btn_commit"
                 style="@style/style_common_btn"
                 android:background="@color/color_main"
-                android:text="购买" />
+                android:text="更新" />
         </LinearLayout>
     </ScrollView>
 

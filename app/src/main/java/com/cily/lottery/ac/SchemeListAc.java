@@ -39,7 +39,7 @@ public class SchemeListAc extends BaseAc {
 
         BaseViewPagerFragmentAdapter<BaseFg> adapter = new BaseViewPagerFragmentAdapter<>(getSupportFragmentManager(), fgs);
 
-        final NoScrollViewPager noVp = findView(R.id.noVp_id);
+        final NoScrollViewPager noVp = findView(R.id.nvp);
         noVp.setAdapter(adapter);
         noVp.setScrollable(true);
         noVp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
