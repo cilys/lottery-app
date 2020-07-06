@@ -201,6 +201,7 @@ public class NetWork {
     }
 
     public final static void orderList(LifecycleProvider lp, int pageNumber,
+                                        String customerId,
                                         ResultSubscriber<OrderBean> rs){
         if (lp == null){
             return;
@@ -208,6 +209,7 @@ public class NetWork {
         Map<String, String> map = new HashMap<>();
         map.put("pageNumber", String.valueOf(pageNumber));
         map.put("pageSize", String.valueOf(Conf.PAGE_SIZE));
+        map.put("customerId", customerId);
 
         Observable ob = getService().orderList(headers(), map)
                 .map(new BaseEntity<OrderBean>()).compose(lp.bindToLifecycle());

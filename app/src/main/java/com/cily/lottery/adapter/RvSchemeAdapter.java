@@ -41,6 +41,7 @@ public class RvSchemeAdapter extends RecyclerView.Adapter<RvSchemeAdapter.VH> {
         BigDecimal bonusMoney = Utils.toBigDecimal(datas.get(position).getTotalBonus(), BaseAc.ZERO);
 
         holder.showBonusIcon (Utils.moreThan(bonusMoney, BaseAc.ZERO));
+        holder.setText(holder.tv_totalBonus, "奖金总额：" + bonusMoney.toString());
 
         if (holder.rootView != null) {
             holder.rootView.setOnClickListener(new SingleClickListener() {
@@ -60,7 +61,8 @@ public class RvSchemeAdapter extends RecyclerView.Adapter<RvSchemeAdapter.VH> {
     }
 
     protected static class VH extends RecyclerView.ViewHolder{
-        private TextView tv_name, tv_totalMoney, tv_selledMoney, tv_status, tv_outOfTime;
+        private TextView tv_name, tv_totalMoney, tv_selledMoney,
+                tv_status, tv_outOfTime, tv_totalBonus;
         private ImageView img_bonus;
         private View rootView;
 
@@ -74,6 +76,7 @@ public class RvSchemeAdapter extends RecyclerView.Adapter<RvSchemeAdapter.VH> {
             tv_selledMoney = (TextView)v.findViewById(R.id.tv_selledMoney);
             tv_status = (TextView)v.findViewById(R.id.tv_status);
             tv_outOfTime = (TextView)v.findViewById(R.id.tv_outOfTime);
+            tv_totalBonus = (TextView)v.findViewById(R.id.tv_totalBonus);
 
             img_bonus = (ImageView)v.findViewById(R.id.img_bonus);
         }

@@ -8,6 +8,11 @@
 
     <include layout="@layout/common_title" />
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,21 +84,21 @@
                 android:text="修改密码" />
             <View style="@style/style_splite_line_h" />
 
+            <TextView
+                android:id="@+id/tv_address"
+                style="@style/style_me_tv"
+                android:text="家庭住址：" />
+            <View style="@style/style_splite_line_h" />
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_frame_margin"
+                android:layout_height="@dimen/dp_y10"
                 android:background="@color/color_light_gray"/>
 
             <TextView
                 android:id="@+id/tv_leftMoney"
                 style="@style/style_me_tv_no_drawableRight"
                 android:text="账户余额：" />
-            <View style="@style/style_splite_line_h" />
-
-            <TextView
-                android:id="@+id/tv_address"
-                style="@style/style_me_tv"
-                android:text="家庭住址：" />
             <View style="@style/style_splite_line_h" />
 
             <TextView
@@ -107,6 +112,11 @@
                 style="@style/style_me_tv"
                 android:text="资金流水" />
             <View style="@style/style_splite_line_h" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_y10"
+                android:background="@color/color_light_gray"/>
 
             <TextView
                 android:id="@+id/tv_scheme_order"
@@ -131,5 +141,5 @@
                 android:textColor="@color/color_red" />
         </LinearLayout>
     </ScrollView>
-
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

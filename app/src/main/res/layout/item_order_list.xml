@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_y10"
+        android:paddingLeft="@dimen/dp_y20"
+        android:paddingRight="@dimen/dp_y20"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_schemeName"
+            style="@style/style_item_info"
+            android:text="方案名称：" />
+
+        <TextView
+            android:id="@+id/tv_cusertomerName"
+            style="@style/style_item_info"
+            android:text="客户姓名：" />
+
+        <TextView
+            android:id="@+id/tv_money"
+            style="@style/style_item_info"
+            android:text="购买份额：" />
+
+        <TextView
+            android:id="@+id/tv_payType"
+            style="@style/style_item_info"
+            android:text="支付方式：" />
+
+        <TextView
+            android:id="@+id/tv_orderStatus"
+            style="@style/style_item_info"
+            android:text="支付状态：" />
+
+        <TextView
+            android:id="@+id/tv_createTime"
+            style="@style/style_item_info"
+            android:paddingBottom="@dimen/dp_y20"
+            android:text="创建时间：" />
+        <View
+            style="@style/style_splite_line_h" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_bonus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/dp_y20"
+        android:visibility="visible"
+        android:src="@mipmap/icon_bonus" />
+
+</RelativeLayout>

@@ -28,7 +28,7 @@
             <TextView
                 android:id="@+id/tv_totalMoney"
                 style="@style/style_me_tv_no_drawableRight"
-                android:text="总金额："/>
+                android:text="方案总额："/>
             <View style="@style/style_splite_line_h" />
 
             <TextView
@@ -40,7 +40,7 @@
             <TextView
                 android:id="@+id/tv_payedMoney"
                 style="@style/style_me_tv_no_drawableRight"
-                android:text="已支付金额："/>
+                android:text="成交金额："/>
             <View
                 style="@style/style_splite_line_h" />
 
@@ -59,20 +59,20 @@
             <TextView
                 android:id="@+id/tv_totalBonus"
                 style="@style/style_me_tv_no_drawableRight"
-                android:text="总奖金：" />
+                android:text="奖金总额：" />
             <View style="@style/style_splite_line_h" />
 
             <TextView
                 android:id="@+id/tv_bonusRate"
                 style="@style/style_me_tv_no_drawableRight"
-                android:text="税率(%)：" />
+                android:text="税率（%）：" />
             <View
                 style="@style/style_splite_line_h" />
 
             <TextView
                 android:id="@+id/tv_canUseBonus"
                 style="@style/style_me_tv_no_drawableRight"
-                android:text="可分配奖金：" />
+                android:text="可用奖金：" />
             <View style="@style/style_splite_line_h" />
 
             <TextView

@@ -31,6 +31,11 @@
             android:text="方案状态：" />
 
         <TextView
+            android:id="@+id/tv_totalBonus"
+            style="@style/style_item_info"
+            android:text="奖金总额：" />
+
+        <TextView
             android:id="@+id/tv_outOfTime"
             style="@style/style_item_info"
             android:paddingBottom="@dimen/dp_y20"

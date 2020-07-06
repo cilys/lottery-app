@@ -147,7 +147,7 @@ public abstract class BaseFg extends BaseOkHttpRxBusLazyFragment {
         if (refresh){
             startTimer();
         }else {
-            stopTimer();
+            disLoading();
         }
     }
 

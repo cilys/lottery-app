@@ -2,6 +2,8 @@ package com.cily.lottery.ac;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.cily.lottery.R;
 import com.cily.lottery.fg.BaseFg;
@@ -37,6 +39,10 @@ public class SchemeListAc extends BaseAc {
         historyFg.setArguments(historyBundle);
         fgs.add(historyFg);
 
+        final RadioGroup rg = findView(R.id.rg);
+        final RadioButton rbt_list = findView(R.id.rbt_list);
+        final RadioButton rbt_history = findView(R.id.rbt_history);
+
         BaseViewPagerFragmentAdapter<BaseFg> adapter = new BaseViewPagerFragmentAdapter<>(getSupportFragmentManager(), fgs);
 
         final NoScrollViewPager noVp = findView(R.id.nvp);
@@ -52,14 +58,28 @@ public class SchemeListAc extends BaseAc {
             public void onPageSelected(int i) {
                 if (i == 1){
                     setTitle("历史记录");
+                    rbt_history.setChecked(true);
                 }else {
                     setTitle("方案列表");
+                    rbt_list.setChecked(true);
                 }
             }
 
             @Override
             public void onPageScrollStateChanged(int i) {
 
+            }
+        });
+
+
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.rbt_history){
+                    noVp.setCurrentItem(1);
+                } else {
+                    noVp.setCurrentItem(0);
+                }
             }
         });
     }

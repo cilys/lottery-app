@@ -4,7 +4,9 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.cily.lottery.Conf;
 import com.cily.lottery.R;
+import com.cily.lottery.Sp;
 import com.cily.lottery.adapter.RvOrderAdapter;
 import com.cily.lottery.bean.OrderBean;
 import com.cily.lottery.net.NetWork;
@@ -49,6 +51,16 @@ public class OrderListAc extends BaseAc {
                 }
             }
         });
+
+        getData(true);
+        srlRefresh(true);
+    }
+
+    @Override
+    protected void srlRefreshListener() {
+        super.srlRefreshListener();
+
+        getData(true);
     }
 
     private int pageNumber;
@@ -59,11 +71,12 @@ public class OrderListAc extends BaseAc {
         }
         if (refresh){
             pageNumber = 1;
-        }else {
+            srlRefresh(true);
+        } else {
             pageNumber ++;
         }
 
-        NetWork.orderList(this, pageNumber, new ResultSubscriber<OrderBean>() {
+        NetWork.orderList(this, pageNumber, Sp.getStr(Conf.SP_USER_ID, null), new ResultSubscriber<OrderBean>() {
             @Override
             public void onSuccess(OrderBean schemeBean) {
                 srlRefresh(false);
@@ -91,8 +104,6 @@ public class OrderListAc extends BaseAc {
             public void onFailure(String s, String s1) {
                 srlRefresh(false);
                 showToast(s1);
-
-                pageNumber --;
             }
         });
     }

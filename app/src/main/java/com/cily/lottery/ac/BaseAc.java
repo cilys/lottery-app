@@ -1,6 +1,7 @@
 package com.cily.lottery.ac;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
@@ -90,7 +91,14 @@ public abstract class BaseAc extends BaseOkHttpRxBusActivity {
             return false;
         }
         showLoading(loadingText);
+        startTimer();
         return true;
+    }
+
+    @Override
+    public void disLoading() {
+        super.disLoading();
+        stopTimer();
     }
 
     @Override
@@ -156,6 +164,42 @@ public abstract class BaseAc extends BaseOkHttpRxBusActivity {
         if (srl != null) {
             srl.setRefreshing(refresh);
         }
+        if (refresh){
+            startTimer();
+        }else {
+            disLoading();
+        }
+    }
+
+    private CountDownTimer cdt;
+    protected void startTimer(){
+        stopTimer();
+        if (cdt == null) {
+            cdt = new CountDownTimer(45000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+
+                }
+
+                @Override
+                public void onFinish() {
+                    srlRefresh(false);
+                    disLoading();
+                }
+            };
+        }
+        cdt.start();
+    }
+    protected void stopTimer(){
+        if (cdt != null){
+            cdt.cancel();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        srlRefresh(false);
     }
 
     protected String fomcat(String str){

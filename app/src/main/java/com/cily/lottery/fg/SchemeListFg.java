@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cily.lottery.R;
+import com.cily.lottery.ac.SchemeInfoAc;
 import com.cily.lottery.adapter.RvSchemeAdapter;
 import com.cily.lottery.bean.SchemeBean;
 import com.cily.lottery.net.NetWork;
@@ -57,6 +58,25 @@ public class SchemeListFg extends BaseFg {
                 }
             }
         });
+        adapter.setOnItemClickListener(new RvSchemeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Bundle bundle = new Bundle();
+                bundle.putString("totalBonus", datas.get(position).getTotalBonus());
+                bundle.putString("canUseBonus", datas.get(position).getCanUseBonus());
+                bundle.putString("totalMoney", datas.get(position).getTotalMoney());
+                bundle.putString("outOfTime", datas.get(position).getOutOfTime());
+                bundle.putString("selledMoney", datas.get(position).getSelledMoney());
+                bundle.putString("payedMoney", datas.get(position).getPayedMoney());
+                bundle.putString("name", datas.get(position).getName());
+                bundle.putString("id", datas.get(position).getId());
+                bundle.putString("bonusRate", datas.get(position).getBonusRate());
+                bundle.putString("descption", datas.get(position).getDescption());
+                bundle.putString("status", datas.get(position).getStatus());
+                bundle.putBoolean("isHistory", "1".equals(type));
+                toAc(SchemeInfoAc.class, bundle);
+            }
+        });
     }
 
     @Override
@@ -78,7 +98,7 @@ public class SchemeListFg extends BaseFg {
             pageNumber ++;
         }
 
-        NetWork.schemeList(this, pageNumber, "1", new ResultSubscriber<SchemeBean>() {
+        NetWork.schemeList(this, pageNumber, type, new ResultSubscriber<SchemeBean>() {
             @Override
             public void onSuccess(SchemeBean schemeBean) {
                 srlRefresh(false);

@@ -83,4 +83,18 @@ public class PayType {
         return isAddToUser;
     }
 
+    public final static String fomcatPayStatus(String payStatus){
+        if (payStatus == null){
+            return "";
+        }
+        if ("0".equals(payStatus)) {
+            return "已支付";
+        }else if ("1".equals(payStatus)){
+            return "待支付";
+        }else if ("2".equals(payStatus)){
+            return "已退款";
+        }
+        return payStatus;
+    }
+
 }

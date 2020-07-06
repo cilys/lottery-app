@@ -85,6 +85,7 @@ public class OrderBean implements Serializable {
         private String createTime;
         private String customerId;
         private String id;
+        private String schemeName;
 
         public String getBonusStatus() {
             return bonusStatus;
@@ -212,6 +213,14 @@ public class OrderBean implements Serializable {
 
         public void setId(String id) {
             this.id = id;
+        }
+
+        public String getSchemeName() {
+            return schemeName;
+        }
+
+        public void setSchemeName(String schemeName) {
+            this.schemeName = schemeName;
         }
     }
 }

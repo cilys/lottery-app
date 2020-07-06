@@ -54,7 +54,7 @@ public class OrderAddAc extends BaseAc {
         setText(tv_name, "方案名称：" + fomcat(name));
 
         TextView tv_totalMoney = findView(R.id.tv_totalMoney);
-        setText(tv_totalMoney, "总金额：" + fomcat(totalMoney));
+        setText(tv_totalMoney, "方案总额：" + fomcat(totalMoney));
 
         TextView tv_leftMoney = findView(R.id.tv_leftMoney);
         setText(tv_leftMoney, "剩余额度：" + fomcat(LEFT_MONEY.toString()));
@@ -96,7 +96,7 @@ public class OrderAddAc extends BaseAc {
 
                         if (Utils.noLessThan(LEFT_MONEY, selected)){
                             buyMoney = selectedMoney;
-                            setText(tv, buyMoney);
+                            setText(tv, "购买额度：" + buyMoney);
                         } else {
                             showToast("剩余额度不足");
                         }
@@ -111,7 +111,7 @@ public class OrderAddAc extends BaseAc {
                     public void onClick(DialogInterface dialog, int which) {
                         payType = PayType.PAY_TYPES[which];
                         if (tv != null){
-                            setText(tv, PayType.fomcatPayType(payType));
+                            setText(tv, "支付方式：" + PayType.fomcatPayType(payType));
                         }
                     }
                 }).create().show();
