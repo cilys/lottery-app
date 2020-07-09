@@ -34,7 +34,13 @@
             <TextView
                 android:id="@+id/tv_selledMoney"
                 style="@style/style_me_tv_no_drawableRight"
-                android:text="已售金额："/>
+                android:text="已售额度："/>
+            <View style="@style/style_splite_line_h" />
+
+            <TextView
+                android:id="@+id/tv_leftMoney"
+                style="@style/style_me_tv_no_drawableRight"
+                android:text="剩余额度："/>
             <View style="@style/style_splite_line_h" />
 
             <TextView
@@ -86,6 +92,16 @@
                 style="@style/style_common_btn"
                 android:background="@color/color_main"
                 android:text="购买" />
+
+            <Button
+                android:id="@+id/btn_list"
+                style="@style/style_common_btn"
+                android:background="@drawable/round_bg_user_realname"
+                android:layout_marginTop="@dimen/dp_frame_margin"
+                android:text="购买记录"
+                android:gravity="center"
+                android:textSize="@dimen/dp_textsize_30"
+                android:textColor="@color/color_main" />
         </LinearLayout>
     </ScrollView>
 

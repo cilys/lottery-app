@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_y10"
+        android:paddingLeft="@dimen/dp_y20"
+        android:paddingRight="@dimen/dp_y20"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_money"
+            style="@style/style_item_info"
+            android:text="提现金额：" />
+
+        <TextView
+            android:id="@+id/tv_applyTime"
+            style="@style/style_item_info"
+            android:text="申请时间：" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            style="@style/style_item_info"
+            android:text="提现进度：" />
+
+        <TextView
+            android:id="@+id/tv_msg"
+            style="@style/style_item_info"
+            android:text="备注信息：" />
+
+        <TextView
+            android:id="@+id/tv_operatorName"
+            style="@style/style_item_info"
+            android:text="操作人员：" />
+
+        <TextView
+            android:id="@+id/tv_opreatorResult"
+            style="@style/style_item_info"
+            android:paddingBottom="@dimen/dp_y20"
+            android:text="操作备注：" />
+        <View
+            style="@style/style_splite_line_h" />
+    </LinearLayout>
+</RelativeLayout>

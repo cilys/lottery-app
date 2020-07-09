@@ -18,6 +18,7 @@ public class UserBean implements Serializable {
     private String bankName;
     private String bankCard;
     private String createTime;
+    private String coldMoney;
 
     public String getPhone() {
         return phone;
@@ -132,5 +133,13 @@ public class UserBean implements Serializable {
                 ", bankCard='" + bankCard + '\'' +
                 ", createTime='" + createTime + '\'' +
                 '}';
+    }
+
+    public String getColdMoney() {
+        return coldMoney;
+    }
+
+    public void setColdMoney(String coldMoney) {
+        this.coldMoney = coldMoney;
     }
 }

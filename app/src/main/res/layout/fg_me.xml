@@ -8,11 +8,6 @@
 
     <include layout="@layout/common_title" />
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/srl"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -129,7 +124,11 @@
                 style="@style/style_me_tv"
                 android:text="申请提现：" />
             <View style="@style/style_splite_line_h" />
-
+            <TextView
+                android:id="@+id/tv_cash_list"
+                style="@style/style_me_tv"
+                android:text="提现记录：" />
+            <View style="@style/style_splite_line_h" />
             <Button
                 android:id="@+id/btn_logout"
                 style="@style/style_common_btn"
@@ -141,5 +140,4 @@
                 android:textColor="@color/color_red" />
         </LinearLayout>
     </ScrollView>
-    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

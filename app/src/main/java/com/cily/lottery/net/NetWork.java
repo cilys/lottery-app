@@ -3,6 +3,7 @@ package com.cily.lottery.net;
 import com.cily.lottery.BuildConfig;
 import com.cily.lottery.Conf;
 import com.cily.lottery.Sp;
+import com.cily.lottery.bean.CashBean;
 import com.cily.lottery.bean.OrderBean;
 import com.cily.lottery.bean.SchemeBean;
 import com.cily.lottery.bean.UserBean;
@@ -108,6 +109,8 @@ public class NetWork {
     }
 
 
+
+
     public final static void changePwd(LifecycleProvider lp, String oldPwd, String newPwd, ResultSubscriber rs){
         if (lp == null){
             return;
@@ -201,7 +204,8 @@ public class NetWork {
     }
 
     public final static void orderList(LifecycleProvider lp, int pageNumber,
-                                        String customerId,
+                                       String schemeId,
+                                       String customerId,
                                         ResultSubscriber<OrderBean> rs){
         if (lp == null){
             return;
@@ -209,7 +213,12 @@ public class NetWork {
         Map<String, String> map = new HashMap<>();
         map.put("pageNumber", String.valueOf(pageNumber));
         map.put("pageSize", String.valueOf(Conf.PAGE_SIZE));
-        map.put("customerId", customerId);
+        if (!StrUtils.isEmpty(customerId)) {
+            map.put("customerId", customerId);
+        }
+        if (!StrUtils.isEmpty(schemeId)){
+            map.put("schemeId", schemeId);
+        }
 
         Observable ob = getService().orderList(headers(), map)
                 .map(new BaseEntity<OrderBean>()).compose(lp.bindToLifecycle());
@@ -238,6 +247,40 @@ public class NetWork {
         toSub(ob, rs);
     }
 
+    public final static void cashAdd(LifecycleProvider lp, String userId,
+                                      String money, String msg,
+                                      ResultSubscriber rs){
+        if (lp == null){
+            return;
+        }
+        Map<String, String> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("money", money);
+        if (!StrUtils.isEmpty(msg)) {
+            map.put("msg", msg);
+        }
+
+        Observable ob = getService().cashAdd(headers(), map)
+                .map(new BaseEntity()).compose(lp.bindToLifecycle());
+
+        toSub(ob, rs);
+    }
+
+    public final static void cashList(LifecycleProvider lp, int pageNumber,
+                                      String userId, ResultSubscriber<CashBean> rs){
+        if (lp == null){
+            return;
+        }
+        Map<String, String> map = new HashMap<>();
+        map.put("userId", userId);
+        map.put("pageNumber", String.valueOf(pageNumber));
+        map.put("pageSize", String.valueOf(Conf.PAGE_SIZE));
+
+        Observable ob = getService().cashList(headers(), map)
+                .map(new BaseEntity<CashBean>()).compose(lp.bindToLifecycle());
+
+        toSub(ob, rs);
+    }
 
     private static <T> void toSub(Observable<T> observable, Observer<T> observer) {
         observable.subscribeOn(Schedulers.io())

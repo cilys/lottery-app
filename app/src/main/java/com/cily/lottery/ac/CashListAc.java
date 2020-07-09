@@ -1,48 +1,39 @@
 package com.cily.lottery.ac;
 
 import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.cily.lottery.Conf;
 import com.cily.lottery.R;
 import com.cily.lottery.Sp;
-import com.cily.lottery.adapter.RvOrderAdapter;
-import com.cily.lottery.bean.OrderBean;
+import com.cily.lottery.adapter.RvCashListAdapter;
+import com.cily.lottery.bean.CashBean;
 import com.cily.lottery.net.NetWork;
 import com.cily.utils.app.rx.okhttp.ResultSubscriber;
-import com.cily.utils.base.StrUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderListAc extends BaseAc {
+public class CashListAc extends BaseAc {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.ac_order_list;
+        return R.layout.ac_cash_list;
     }
 
-    private RvOrderAdapter adapter;
-    private List<OrderBean.ItemBean> datas;
-
-    private String schemeId;
+    private RvCashListAdapter adapter;
+    private List<CashBean.ItemBean> datas;
     @Override
     protected void initUI() {
         super.initUI();
 
-        setTitle("订单记录");
-
-        schemeId = getIntent().getStringExtra("schemeId");
-        String schemeName = getIntent().getStringExtra("name");
-
-        if (!StrUtils.isEmpty(schemeName)){
-            setTitle(schemeName);
-        }
+        setTitle("提现记录");
 
         RecyclerView rv = findView(R.id.rv);
         datas = new ArrayList<>();
-        adapter = new RvOrderAdapter(datas);
+        adapter = new RvCashListAdapter(datas);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
         rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -86,15 +77,9 @@ public class OrderListAc extends BaseAc {
             pageNumber ++;
         }
 
-        String userId = null;
-        if (StrUtils.isEmpty(schemeId)){
-            userId = Sp.getStr(Conf.SP_USER_ID, null);;
-        }
-
-
-        NetWork.orderList(this, pageNumber, schemeId, userId, new ResultSubscriber<OrderBean>() {
+        NetWork.cashList(this, pageNumber, Sp.getStr(Conf.SP_USER_ID, null), new ResultSubscriber<CashBean>() {
             @Override
-            public void onSuccess(OrderBean schemeBean) {
+            public void onSuccess(CashBean schemeBean) {
                 srlRefresh(false);
                 if (schemeBean != null){
                     pageNumber = schemeBean.getPageNumber();

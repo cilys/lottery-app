@@ -1,5 +1,6 @@
 package com.cily.lottery.net;
 
+import com.cily.lottery.bean.CashBean;
 import com.cily.lottery.bean.OrderBean;
 import com.cily.lottery.bean.SchemeBean;
 import com.cily.lottery.bean.UserBean;
@@ -34,6 +35,8 @@ public interface NetService {
     String URL_ORDER_LIST = "order/query";
 
     String URL_UPDATE_USER = "user/updateInfo";
+    String URL_CASH_ADD = "cash/add";
+    String URL_CASH_LIST = "cash/query";
 
     @POST(NetService.URL_LOGIN)
     Observable<BaseResBean<UserBean>> login(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> map);
@@ -61,4 +64,10 @@ public interface NetService {
 
     @POST(NetService.URL_REGIST)
     Observable<BaseResBean> regist(@HeaderMap Map<String, String> headers, @Body Map<String, String> map);
+
+    @POST(NetService.URL_CASH_ADD)
+    Observable<BaseResBean> cashAdd(@HeaderMap Map<String, String> headers, @Body Map<String, String> map);
+
+    @POST(NetService.URL_CASH_LIST)
+    Observable<BaseResBean<CashBean>> cashList(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> map);
 }

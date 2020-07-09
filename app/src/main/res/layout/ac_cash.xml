@@ -36,8 +36,7 @@
     </LinearLayout>
 
     <LinearLayout
-        style="@style/style_regist_item_ll"
-        >
+        style="@style/style_regist_item_ll">
         <TextView
             style="@style/style_regist_item_ll_img"
             android:layout_width="wrap_content"
@@ -45,8 +44,22 @@
             android:text="提现金额："/>
         <EditText
             android:id="@+id/ed_money"
-            android:hint="请提现金额"
+            android:hint="请输入提现金额"
             android:digits="0123456789."
+            style="@style/style_regist_item_ll_ed" />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/style_regist_item_ll">
+        <TextView
+            style="@style/style_regist_item_ll_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="备注信息："/>
+        <EditText
+            android:id="@+id/ed_msg"
+            android:hint="请输入备注信息（100字以内）"
+            android:maxLength="100"
             style="@style/style_regist_item_ll_ed" />
     </LinearLayout>
 
@@ -55,5 +68,15 @@
         style="@style/style_common_btn"
         android:background="@color/color_main"
         android:text="提现"/>
+
+    <Button
+        android:id="@+id/btn_list"
+        style="@style/style_common_btn"
+        android:background="@drawable/round_bg_user_realname"
+        android:layout_marginTop="@dimen/dp_frame_margin"
+        android:text="提现记录"
+        android:gravity="center"
+        android:textSize="@dimen/dp_textsize_30"
+        android:textColor="@color/color_main" />
 
 </LinearLayout>

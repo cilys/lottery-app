@@ -139,7 +139,9 @@ public abstract class BaseAc extends BaseOkHttpRxBusActivity {
         NetWork.userInfo(this, Sp.getStr(Conf.SP_USER_ID, null), new ResultSubscriber<UserBean>() {
             @Override
             public void onSuccess(UserBean userBean) {
-
+                if (userBean != null){
+                    Sp.putStr(Conf.SP_LEFT_MONEY, userBean.getLeftMoney());
+                }
             }
 
             @Override

@@ -1,8 +1,12 @@
 package com.cily.lottery.ac;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.cily.lottery.Conf;
@@ -10,6 +14,7 @@ import com.cily.lottery.PayType;
 import com.cily.lottery.R;
 import com.cily.lottery.Sp;
 import com.cily.lottery.Utils;
+import com.cily.lottery.dialog.InputDialog;
 import com.cily.lottery.net.NetWork;
 import com.cily.utils.app.listener.SingleClickListener;
 import com.cily.utils.app.rx.okhttp.ResultSubscriber;
@@ -87,21 +92,28 @@ public class OrderAddAc extends BaseAc {
     }
 
     private void showOrderMoneyDialog(TextView tv){
-        new AlertDialog.Builder(this).setTitle("请选择购买额度")
-                .setItems(PayType.MONEY, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String selectedMoney = PayType.MONEY[which];
-                        BigDecimal selected = Utils.toBigDecimal(selectedMoney);
+//        new AlertDialog.Builder(this).setTitle("请选择购买额度")
+//                .setItems(PayType.MONEY, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        String selectedMoney = PayType.MONEY[which];
+//                        BigDecimal selected = Utils.toBigDecimal(selectedMoney);
+//
+//                        if (Utils.noLessThan(LEFT_MONEY, selected)){
+//                            buyMoney = selectedMoney;
+//                            setText(tv, "购买额度：" + buyMoney);
+//                        } else {
+//                            showToast("剩余额度不足");
+//                        }
+//                    }
+//                }).create().show();
+        showInputDialog("购买额度：", buyMoney, tv);
+    }
 
-                        if (Utils.noLessThan(LEFT_MONEY, selected)){
-                            buyMoney = selectedMoney;
-                            setText(tv, "购买额度：" + buyMoney);
-                        } else {
-                            showToast("剩余额度不足");
-                        }
-                    }
-                }).create().show();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dismissInputDialog();
     }
 
     private void showPayTypeDialog(final TextView tv){
@@ -141,6 +153,8 @@ public class OrderAddAc extends BaseAc {
             public void onSuccess(Object o) {
                 disLoading();
                 showResult();
+
+                getUserInfo();
             }
 
             @Override
@@ -167,5 +181,57 @@ public class OrderAddAc extends BaseAc {
                         dialog.dismiss();
                     }
                 }).create().show();
+    }
+
+    private InputDialog inputDialog;
+    private void showInputDialog(final String title, final String defValue, final TextView tv){
+        InputMethodManager inputManager=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+
+        inputDialog = new InputDialog(this);
+        inputDialog.getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        if (tv != null) {
+            inputDialog.setMsg(defValue);
+        }
+        inputDialog.setTitle(title)
+                .setCanceledOnTouchOutside(false)
+                .setCancelBtn(new InputDialog.OnClickListener() {
+                    @Override
+                    public void onClick(Dialog dialog, View view, CharSequence input) {
+                        dismissInputDialog();
+                    }
+                }).setCommitBtn(new InputDialog.OnClickListener() {
+            @Override
+            public void onClick(Dialog dialog, View view, CharSequence input) {
+                if (input != null) {
+                    String m = input.toString();
+                    BigDecimal selected = Utils.toBigDecimal(m, BaseAc.ZERO);
+                    if (Utils.moreThan(selected, ZERO)){
+
+                    }else {
+                        showToast("请输入合法的购买额度");
+                        return;
+                    }
+
+                    if (Utils.noLessThan(LEFT_MONEY, selected)){
+                        buyMoney = selected.toString();
+                        if (tv != null) {
+                            tv.setText(title + buyMoney);
+                            tv.setTag(input.toString());
+                        }
+                    } else {
+                        showToast("剩余额度不足");
+                        return;
+                    }
+                }
+                dismissInputDialog();
+            }
+        }).show();
+    }
+    private void dismissInputDialog(){
+        if (inputDialog != null){
+            inputDialog.dismiss();
+        }
+        inputDialog = null;
     }
 }

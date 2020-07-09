@@ -37,6 +37,12 @@ public class SchemeFg extends BaseFg {
         showTitleRightImg(true, R.mipmap.ic_history_white);
 
         srl = (SwipeRefreshLayout)v.findViewById(R.id.srl);
+        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData(true);
+            }
+        });
         RecyclerView rv = (RecyclerView)v.findViewById(R.id.rv);
         datas = new ArrayList<>();
         adapter = new RvSchemeAdapter(datas);

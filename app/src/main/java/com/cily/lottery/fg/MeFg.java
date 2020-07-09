@@ -2,6 +2,7 @@ package com.cily.lottery.fg;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.cily.lottery.R;
 import com.cily.lottery.Sp;
 import com.cily.lottery.Utils;
 import com.cily.lottery.ac.CashAc;
+import com.cily.lottery.ac.CashListAc;
 import com.cily.lottery.ac.ChangePwdAc;
 import com.cily.lottery.ac.LoginAc;
 import com.cily.lottery.ac.OrderListAc;
@@ -19,6 +21,7 @@ import com.cily.lottery.ac.UserInfoAc;
 import com.cily.lottery.ac.UserMoneyFlowAc;
 import com.cily.lottery.bean.UserBean;
 import com.cily.utils.app.listener.SingleClickListener;
+import com.cily.utils.base.StrUtils;
 
 public class MeFg extends BaseFg {
     @Override
@@ -45,6 +48,12 @@ public class MeFg extends BaseFg {
             @Override
             public void onSingleClick(View view) {
                 toCash();
+            }
+        });
+        v.findViewById(R.id.tv_cash_list).setOnClickListener(new SingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                toAc(CashListAc.class, null);
             }
         });
 
@@ -122,9 +131,13 @@ public class MeFg extends BaseFg {
     }
 
     @Override
-    protected void loadOnly() {
-        super.loadOnly();
+    protected void srlRefresh(boolean refresh) {
+        super.srlRefresh(refresh);
+    }
 
+    @Override
+    protected void load() {
+        super.load();
         getUserInfo(true);
     }
 
@@ -135,6 +148,7 @@ public class MeFg extends BaseFg {
         }
         Bundle i = new Bundle();
         i.putString("leftMoney", userBean.getLeftMoney());
+        i.putString("coldMoney", userBean.getColdMoney());
         i.putString("bankName", userBean.getBankName());
         i.putString("bankCard", userBean.getBankCard());
 
@@ -154,6 +168,7 @@ public class MeFg extends BaseFg {
         i.putString("idCard", userBean.getIdCard());
         i.putString("phone", userBean.getPhone());
         i.putString("sex", userBean.getSex());
+        i.putString("coldMoney", userBean.getColdMoney());
 
         toAc(UserInfoAc.class, i);
     }
@@ -162,6 +177,7 @@ public class MeFg extends BaseFg {
     @Override
     protected void getUserInfoSuccess(UserBean userBean) {
         super.getUserInfoSuccess(userBean);
+        srlRefresh(false);
         this.userBean = userBean;
 
         if (userBean != null){
@@ -169,7 +185,7 @@ public class MeFg extends BaseFg {
             setText(tv_sex, "用户性别：" + Utils.fomcatSex(userBean.getSex()));
             setText(tv_idCard, "身份证号：" + Utils.fomcatStar(userBean.getIdCard()));
             setText(tv_address, "家庭住址：" + userBean.getAddress());
-            setText(tv_leftMoney, "账户余额：" + userBean.getLeftMoney());
+            setText(tv_leftMoney, "账户余额：" + userBean.getLeftMoney() + fomcatColdMoney(userBean.getColdMoney()));
             setText(tv_bankCard, "银行卡号：" + Utils.fomcatStar(userBean.getBankCard()));
             setText(tv_phone, "手机号码：" + userBean.getPhone());
 //            Sp.putStr(Conf.SP_REAL_NAME, userBean.getRealName());
@@ -183,9 +199,18 @@ public class MeFg extends BaseFg {
         }
     }
 
+
+    private String fomcatColdMoney(String coldMoney){
+        if (StrUtils.isEmpty(coldMoney)){
+            return "";
+        }
+        return " + " + coldMoney + "(冻结中)";
+    }
+
     @Override
     protected void getUserInfoFailed(String s, String s1) {
         super.getUserInfoFailed(s, s1);
         showToast(s1);
+        srlRefresh(false);
     }
 }

@@ -96,4 +96,27 @@ public class Utils {
         }
         return status;
     }
+
+    public static String fomcatRate(String rate){
+        if (StrUtils.isEmpty(rate)){
+            return "";
+        }
+        return rate + "%";
+    }
+
+    public static String fomcatBonusStatus(String bonusStatus){
+        if (StrUtils.isEmpty(bonusStatus)){
+            return "";
+        }
+        if ("0".equals(bonusStatus)){
+            return "已到账";
+        } else if ("1".equals(bonusStatus)){
+            return "已计算";
+        } else if ("2".equals(bonusStatus)){
+            return "被退回";
+        } else if ("3".equals(bonusStatus)){
+            return "待处理";
+        }
+        return bonusStatus;
+    }
 }

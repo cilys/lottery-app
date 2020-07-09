@@ -40,6 +40,7 @@ public class UserInfoAc extends BaseAc {
         String idCard = Utils.fomcatStar(getIntent().getStringExtra("idCard"));
         String phone = fomcat(getIntent().getStringExtra("phone"));
         String sex = fomcat(getIntent().getStringExtra("sex"));
+        String coldMoney = fomcat(getIntent().getStringExtra("coldMoney"));
 
         final TextView tv_userName = findView(R.id.tv_userName);
         setText(tv_userName, "用户账号：" + Sp.getStr(Conf.SP_USER_NAME, ""));
@@ -88,7 +89,7 @@ public class UserInfoAc extends BaseAc {
         });
 
         final TextView tv_leftMoney = findView(R.id.tv_leftMoney);
-        setText(tv_leftMoney, "账户余额：" + leftMoney);
+        setText(tv_leftMoney, "账户余额：" + leftMoney + fomcatColdMoney(coldMoney));
 
         final TextView tv_bankName = findView(R.id.tv_bankName);
         setText(tv_bankName, "开户银行：" + bankName);
@@ -133,6 +134,12 @@ public class UserInfoAc extends BaseAc {
                 updateUserInfo(sex, phone, idCard, address, bankName, bankCard);
             }
         });
+    }
+    private String fomcatColdMoney(String coldMoney){
+        if (StrUtils.isEmpty(coldMoney)){
+            return "";
+        }
+        return " + " + coldMoney + "(冻结中)";
     }
 
     private InputDialog inputDialog;

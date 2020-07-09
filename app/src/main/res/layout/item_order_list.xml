@@ -15,7 +15,6 @@
             android:id="@+id/tv_schemeName"
             style="@style/style_item_info"
             android:text="方案名称：" />
-
         <TextView
             android:id="@+id/tv_cusertomerName"
             style="@style/style_item_info"
@@ -35,6 +34,21 @@
             android:id="@+id/tv_orderStatus"
             style="@style/style_item_info"
             android:text="支付状态：" />
+
+        <TextView
+            android:id="@+id/tv_payRate"
+            style="@style/style_item_info"
+            android:text="投资比例：" />
+
+        <TextView
+            android:id="@+id/tv_bonusMoney"
+            style="@style/style_item_info"
+            android:text="所得奖金：" />
+
+        <TextView
+            android:id="@+id/tv_bonusStatus"
+            style="@style/style_item_info"
+            android:text="奖金状态：" />
 
         <TextView
             android:id="@+id/tv_createTime"

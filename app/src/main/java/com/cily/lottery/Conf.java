@@ -20,8 +20,8 @@ public interface Conf {
 
     int PAGE_SIZE = 20;
 
-    String URL_BASE = "http://192.168.1.3:8080/";
-//    String URL_BASE = "http://boyg.v228.10000net.cn/";
+//    String URL_BASE = "http://192.168.1.3:8080/";
+    String URL_BASE = "http://boyg.v228.10000net.cn/";
 
     int RX_LOGIN_OTHER = 3;
 }

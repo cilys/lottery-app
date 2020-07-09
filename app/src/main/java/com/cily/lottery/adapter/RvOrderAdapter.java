@@ -52,6 +52,15 @@ public class RvOrderAdapter extends RecyclerView.Adapter<RvOrderAdapter.VH> {
         holder.setText(holder.tv_createTime,
                 "创建时间：" + RvSchemeAdapter.fomcat(datas.get(position).getCreateTime()));
 
+        holder.setText(holder.tv_payRate,
+                "投资比例：" + Utils.fomcatRate(datas.get(position).getPayedRate()));
+
+        holder.setText(holder.tv_bonusMoney,
+                "所得奖金：" + RvSchemeAdapter.fomcat(datas.get(position).getBonusMoney()));
+
+        holder.setText(holder.tv_bonusStatus,
+                "奖金状态：" + Utils.fomcatBonusStatus(datas.get(position).getBonusStatus()));
+
         if (StrUtils.isEmpty(datas.get(position).getBonusMoney())){
             holder.showBonusIcon(false);
         }else {
@@ -64,6 +73,8 @@ public class RvOrderAdapter extends RecyclerView.Adapter<RvOrderAdapter.VH> {
         }
     }
 
+
+
     @Override
     public int getItemCount() {
         return datas == null ? 0 : datas.size();
@@ -72,6 +83,7 @@ public class RvOrderAdapter extends RecyclerView.Adapter<RvOrderAdapter.VH> {
     protected static class VH extends RecyclerView.ViewHolder{
         private TextView tv_schemeName, tv_cusertomerName, tv_money,
                 tv_payType, tv_orderStatus, tv_createTime;
+        private TextView tv_payRate, tv_bonusMoney, tv_bonusStatus, tv_canUseBonus;
         private ImageView img_bonus;
 
         public VH(@NonNull View v) {
@@ -85,6 +97,11 @@ public class RvOrderAdapter extends RecyclerView.Adapter<RvOrderAdapter.VH> {
             tv_payType = (TextView)v.findViewById(R.id.tv_payType);
             tv_orderStatus = (TextView)v.findViewById(R.id.tv_orderStatus);
             tv_createTime = (TextView)v.findViewById(R.id.tv_createTime);
+
+            tv_payRate = (TextView)v.findViewById(R.id.tv_payRate);
+            tv_bonusMoney = (TextView)v.findViewById(R.id.tv_bonusMoney);
+            tv_bonusStatus = (TextView)v.findViewById(R.id.tv_bonusStatus);
+            tv_canUseBonus = (TextView)v.findViewById(R.id.tv_canUseBonus);
         }
 
         private void setText(TextView tv, String str){
