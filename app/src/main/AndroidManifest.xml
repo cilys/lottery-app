@@ -22,7 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ac.CashAc" />
         <activity android:name=".ac.MainAc" />
         <activity android:name=".ac.LoginAc" />
@@ -35,7 +34,8 @@
         <activity android:name=".ac.SchemeInfoAc" />
         <activity android:name=".ac.UserMoneyFlowAc" />
         <activity android:name=".ac.CashListAc" />
-
+        <activity android:name=".ac.UseRoleAc"
+            android:process=".web" />
     </application>
 
 </manifest>

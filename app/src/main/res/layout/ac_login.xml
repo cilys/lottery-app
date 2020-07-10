@@ -101,4 +101,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_frame_margin"
         android:text="忘记密码？"/>
+
+    <TextView
+        android:id="@+id/tv_use_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_white"
+        android:layout_below="@+id/tv_phone_to_reset_pwd"
+        android:textSize="@dimen/dp_textsize_30"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_frame_margin"
+        android:text="使用即代表您同意《合买协议》"/>
 </RelativeLayout>

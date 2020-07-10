@@ -55,6 +55,13 @@ public class LoginAc extends BaseAc {
                 showToast("请联系店主，重置登录密码");
             }
         });
+
+        findView(R.id.tv_use_role).setOnClickListener(new SingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                toAc(UseRoleAc.class, null);
+            }
+        });
     }
 
     private void login(final String userName, final String pwd){
