@@ -30,6 +30,8 @@ public interface NetService {
 
     String URL_SCHEME_LIST = "scheme/queryAll";
 
+    String URL_SCHEME_DETAILE = "scheme/queryById";
+
     String URL_ORDER_ADD = "order/add";
 
     String URL_ORDER_LIST = "order/query";
@@ -53,6 +55,9 @@ public interface NetService {
     @POST(NetService.URL_SCHEME_LIST)
     Observable<BaseResBean<SchemeBean>> schemeList(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> map);
 
+    @POST(NetService.URL_SCHEME_DETAILE)
+    Observable<BaseResBean<SchemeBean.ItemBean>> schemeDetail(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> map);
+
     @POST(NetService.URL_ORDER_ADD)
     Observable<BaseResBean> orderAdd(@HeaderMap Map<String, String> headers, @Body Map<String, String> map);
 
@@ -70,4 +75,6 @@ public interface NetService {
 
     @POST(NetService.URL_CASH_LIST)
     Observable<BaseResBean<CashBean>> cashList(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> map);
+
+
 }

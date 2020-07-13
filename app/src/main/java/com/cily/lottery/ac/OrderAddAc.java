@@ -14,6 +14,7 @@ import com.cily.lottery.PayType;
 import com.cily.lottery.R;
 import com.cily.lottery.Sp;
 import com.cily.lottery.Utils;
+import com.cily.lottery.bean.SchemeBean;
 import com.cily.lottery.dialog.InputDialog;
 import com.cily.lottery.net.NetWork;
 import com.cily.utils.app.listener.SingleClickListener;
@@ -28,9 +29,13 @@ public class OrderAddAc extends BaseAc {
         return R.layout.ac_order_add;
     }
 
-    private String buyMoney = "10.00";
+    private String buyMoney = "88.00";
     private String payType = PayType.YU_E;   //1余额支付，2微信支付，3支付宝支付，4银联支付，5现金支付
     private BigDecimal TOTAL_MONEY, LEFT_MONEY;
+
+    private String schemeId;
+
+    private TextView tv_name, tv_totalMoney, tv_leftMoney;
 
     @Override
     protected void initUI() {
@@ -53,15 +58,15 @@ public class OrderAddAc extends BaseAc {
         LEFT_MONEY = Utils.subtract(TOTAL_MONEY, SELLED_MONEY);
 
         String name = getIntent().getStringExtra("name");
-        final String id = getIntent().getStringExtra("id");
+        schemeId = getIntent().getStringExtra("id");
 
-        TextView tv_name = findView(R.id.tv_name);
+        tv_name = findView(R.id.tv_name);
         setText(tv_name, "方案名称：" + fomcat(name));
 
-        TextView tv_totalMoney = findView(R.id.tv_totalMoney);
+        tv_totalMoney = findView(R.id.tv_totalMoney);
         setText(tv_totalMoney, "方案总额：" + fomcat(totalMoney));
 
-        TextView tv_leftMoney = findView(R.id.tv_leftMoney);
+        tv_leftMoney = findView(R.id.tv_leftMoney);
         setText(tv_leftMoney, "剩余额度：" + fomcat(LEFT_MONEY.toString()));
 
         final TextView tv_order = findView(R.id.tv_order);
@@ -86,9 +91,11 @@ public class OrderAddAc extends BaseAc {
         findView(R.id.btn_commit).setOnClickListener(new SingleClickListener() {
             @Override
             public void onSingleClick(View view) {
-                orderAdd(id);
+                orderAdd(schemeId);
             }
         });
+
+        getSchemeDetail(schemeId);
     }
 
     private void showOrderMoneyDialog(TextView tv){
@@ -233,5 +240,42 @@ public class OrderAddAc extends BaseAc {
             inputDialog.dismiss();
         }
         inputDialog = null;
+    }
+
+    @Override
+    protected void srlRefreshListener() {
+        super.srlRefreshListener();
+        getSchemeDetail(schemeId);
+    }
+
+    private void getSchemeDetail(String id){
+        NetWork.schemeDetail(this, id, new ResultSubscriber<SchemeBean.ItemBean>() {
+            @Override
+            public void onSuccess(SchemeBean.ItemBean itemBean) {
+                srlRefresh(false);
+                if (itemBean != null){
+                    String totalMoney = itemBean.getTotalMoney();
+                    BigDecimal tm = Utils.toBigDecimal(totalMoney);
+                    if (tm == null){
+                        tm = ZERO;
+                    }
+                    String selledMoney = itemBean.getSelledMoney();
+                    BigDecimal sm = Utils.toBigDecimal(selledMoney);
+                    if (sm == null){
+                        sm = ZERO;
+                    }
+                    BigDecimal lm = Utils.subtract(tm, sm);
+
+                    setText(tv_name, "方案名称：" + fomcat(itemBean.getName()));
+                    setText(tv_totalMoney, "方案总额：" + fomcat(totalMoney));
+                    setText(tv_leftMoney, "剩余额度：" + fomcat(lm.toString()));
+                }
+            }
+
+            @Override
+            public void onFailure(String s, String s1) {
+                srlRefresh(false);
+            }
+        });
     }
 }

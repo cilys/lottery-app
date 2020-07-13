@@ -128,6 +128,14 @@ public class MeFg extends BaseFg {
                 toAcWithFinish(LoginAc.class, null);
             }
         });
+
+        srl = (SwipeRefreshLayout)v.findViewById(R.id.srl);
+        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getUserInfo(false);
+            }
+        });
     }
 
     @Override

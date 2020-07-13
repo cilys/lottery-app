@@ -17,19 +17,13 @@ import com.cily.utils.base.log.LogType;
 
 import com.trello.rxlifecycle.LifecycleProvider;
 
-import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -186,6 +180,22 @@ public class NetWork {
 
         toSub(ob, rs);
     }
+
+    public final static void schemeDetail(LifecycleProvider lp, String id,
+                                        ResultSubscriber<SchemeBean.ItemBean> rs){
+        if (lp == null){
+            return;
+        }
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id);
+
+        Observable ob = getService().schemeDetail(headers(), map)
+                .map(new BaseEntity<SchemeBean.ItemBean>()).compose(lp.bindToLifecycle());
+
+        toSub(ob, rs);
+    }
+
+
     public final static void orderAdd(LifecycleProvider lp, String schemeId,
                                         String money, String payType,
                                         ResultSubscriber rs){

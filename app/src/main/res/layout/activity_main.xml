@@ -29,13 +29,13 @@
             style="@style/style_main_tab_rbt"
             android:drawableTop="@drawable/select_main_tab_zixun"
             android:checked="true"
-            android:text="资讯" />
+            android:text="主页" />
 
         <RadioButton
             android:id="@+id/rbt_search_id"
             style="@style/style_main_tab_rbt"
             android:drawableTop="@drawable/select_main_tab_search"
-            android:text="查询" />
+            android:text="方案" />
         <RadioButton
             android:id="@+id/rbt_me_id"
             style="@style/style_main_tab_rbt"

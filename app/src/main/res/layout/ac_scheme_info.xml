@@ -9,100 +9,118 @@
 
     <include layout="@layout/common_title" />
 
-    <ScrollView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-        <LinearLayout
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/dp_frame_margin"
-            android:paddingRight="@dimen/dp_frame_margin"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_name"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="方案名称：" />
-            <View style="@style/style_splite_line_h" />
+            android:scrollbars="none">
 
-            <TextView
-                android:id="@+id/tv_totalMoney"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="方案总额："/>
-            <View style="@style/style_splite_line_h" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp_frame_margin"
+                android:paddingRight="@dimen/dp_frame_margin">
 
-            <TextView
-                android:id="@+id/tv_selledMoney"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="已售额度："/>
-            <View style="@style/style_splite_line_h" />
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:text="方案名称：" />
 
-            <TextView
-                android:id="@+id/tv_leftMoney"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="剩余额度："/>
-            <View style="@style/style_splite_line_h" />
+                <View style="@style/style_splite_line_h" />
 
-            <TextView
-                android:id="@+id/tv_payedMoney"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="成交金额："/>
-            <View
-                style="@style/style_splite_line_h" />
+                <TextView
+                    android:id="@+id/tv_totalMoney"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:text="方案总额：" />
 
-            <TextView
-                android:id="@+id/tv_outOfTime"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="过期时间：" />
-            <View style="@style/style_splite_line_h" />
+                <View style="@style/style_splite_line_h" />
 
-            <TextView
-                android:id="@+id/tv_status"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="方案状态：" />
-            <View style="@style/style_splite_line_h" />
+                <TextView
+                    android:id="@+id/tv_selledMoney"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:text="已售额度：" />
 
-            <TextView
-                android:id="@+id/tv_totalBonus"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="奖金总额：" />
-            <View style="@style/style_splite_line_h" />
+                <View style="@style/style_splite_line_h" />
 
-            <TextView
-                android:id="@+id/tv_bonusRate"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="税率（%）：" />
-            <View
-                style="@style/style_splite_line_h" />
+                <TextView
+                    android:id="@+id/tv_leftMoney"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:text="剩余额度：" />
 
-            <TextView
-                android:id="@+id/tv_canUseBonus"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="可用奖金：" />
-            <View style="@style/style_splite_line_h" />
+                <View style="@style/style_splite_line_h" />
 
-            <TextView
-                android:id="@+id/tv_descption"
-                style="@style/style_me_tv_no_drawableRight"
-                android:text="方案详情：" />
-            <View style="@style/style_splite_line_h" />
+                <TextView
+                    android:id="@+id/tv_payedMoney"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:text="成交金额：" />
 
-            <Button
-                android:id="@+id/btn_commit"
-                style="@style/style_common_btn"
-                android:background="@color/color_main"
-                android:text="购买" />
+                <View style="@style/style_splite_line_h" />
 
-            <Button
-                android:id="@+id/btn_list"
-                style="@style/style_common_btn"
-                android:background="@drawable/round_bg_user_realname"
-                android:layout_marginTop="@dimen/dp_frame_margin"
-                android:text="购买记录"
-                android:gravity="center"
-                android:textSize="@dimen/dp_textsize_30"
-                android:textColor="@color/color_main" />
-        </LinearLayout>
-    </ScrollView>
+                <TextView
+                    android:id="@+id/tv_outOfTime"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:text="过期时间：" />
 
+                <View style="@style/style_splite_line_h" />
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:text="方案状态：" />
+
+                <View style="@style/style_splite_line_h" />
+
+                <TextView
+                    android:id="@+id/tv_totalBonus"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:text="奖金总额：" />
+
+                <View style="@style/style_splite_line_h" />
+
+                <TextView
+                    android:id="@+id/tv_bonusRate"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:text="税率（%）：" />
+
+                <View style="@style/style_splite_line_h" />
+
+                <TextView
+                    android:id="@+id/tv_canUseBonus"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:text="可用奖金：" />
+
+                <View style="@style/style_splite_line_h" />
+
+                <TextView
+                    android:id="@+id/tv_descption"
+                    style="@style/style_me_tv_no_drawableRight"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="方案详情：" />
+
+                <View style="@style/style_splite_line_h" />
+
+                <Button
+                    android:id="@+id/btn_commit"
+                    style="@style/style_common_btn"
+                    android:background="@color/color_main"
+                    android:text="购买" />
+
+                <Button
+                    android:id="@+id/btn_list"
+                    style="@style/style_common_btn"
+                    android:layout_marginTop="@dimen/dp_frame_margin"
+                    android:background="@drawable/round_bg_user_realname"
+                    android:gravity="center"
+                    android:text="购买记录"
+                    android:textColor="@color/color_main"
+                    android:textSize="@dimen/dp_textsize_30" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
